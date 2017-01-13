@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.IdentityModel.Services;
 
 namespace GeoDKPOCDMPTest.Web
 {
@@ -13,6 +14,15 @@ namespace GeoDKPOCDMPTest.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Registrer event handler
+            FederatedAuthentication.WSFederationAuthenticationModule.RedirectingToIdentityProvider += WSFederationAuthenticationModule_RedirectingToIdentityProvider;
+        }
+
+        void WSFederationAuthenticationModule_RedirectingToIdentityProvider(object sender, RedirectingToIdentityProviderEventArgs e)
+        {
+            // Populer sign in request'et med whr-parameteren
+            e.SignInRequestMessage.HomeRealm = Request.QueryString["whr"];
         }
     }
 }

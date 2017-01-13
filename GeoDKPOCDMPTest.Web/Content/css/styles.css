@@ -1,0 +1,27 @@
+﻿body {
+    background:wheat;
+}
+
+.container{
+    width:40%;
+    padding: 1em;
+    border-radius:0.5em;
+    margin: auto;
+}
+
+.welcome{
+    padding: 1em;
+    border-radius:0.5em;
+    margin: auto;
+}
+
+.nice-blue{
+    background:linear-gradient( to bottom, aliceblue, lightblue 20%);
+    padding:1em;
+    margin:0.5em;
+    border-radius:.5em;
+}
+
+form{
+        min-height:15em;
+}
