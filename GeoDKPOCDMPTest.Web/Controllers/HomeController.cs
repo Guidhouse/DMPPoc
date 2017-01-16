@@ -20,7 +20,8 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             Thread.CurrentPrincipal = null;
             var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "urn:oid/0.9.2342.19200300.100.1.1")).Value;
             ViewBag.Name = uid;
-            model.Msg = "Du må intet!";
+
+            model.Msg = getValuesFromWs1(42);
             if (pClaim.IsInRole("proverolleB")) { model.Msg = "Du er B'er!"; }
             if (pClaim.IsInRole("proverolleA")) { model.Msg = "Du er A'er!"; }
             return View(model);
@@ -40,6 +41,12 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             return claimsPrincipal;
         }
 
+        private string getValuesFromWs1(int value)
+        {
+            WS1.Service1Client WS1 = new Web.WS1.Service1Client();
+
+            return WS1.GetData(value);
+        }
 
 
     }
