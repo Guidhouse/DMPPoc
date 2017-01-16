@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Net.Security;
 
 namespace GeoDKPOCDMPTest.WS1
 {
@@ -19,11 +20,28 @@ namespace GeoDKPOCDMPTest.WS1
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        [FaultContract(
+        typeof(FaultException))]
+        CompanyInfo GetCompanyByCvrNumber(int cvrNumber);
+
     }
 
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class CompanyInfo
+    {
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public int CvrNumber { get; set; }
+    }
+
+
+
+
+
     [DataContract]
     public class CompositeType
     {

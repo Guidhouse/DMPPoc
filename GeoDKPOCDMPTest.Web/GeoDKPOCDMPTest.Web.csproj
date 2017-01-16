@@ -127,6 +127,9 @@
     <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompanyInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\WS1\Service1.disco" />
     <None Include="Service References\WS1\configuration91.svcinfo" />
     <None Include="Service References\WS1\configuration.svcinfo" />

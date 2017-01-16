@@ -74,6 +74,67 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompanyInfo", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.SerializableAttribute()]
+    public partial class CompanyInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CvrNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CvrNumber {
+            get {
+                return this.CvrNumberField;
+            }
+            set {
+                if ((this.CvrNumberField.Equals(value) != true)) {
+                    this.CvrNumberField = value;
+                    this.RaisePropertyChanged("CvrNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
     public interface IService1 {
@@ -89,6 +150,12 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
+        GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -132,6 +199,14 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber) {
+            return base.Channel.GetCompanyByCvrNumber(cvrNumber);
+        }
+        
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber) {
+            return base.Channel.GetCompanyByCvrNumberAsync(cvrNumber);
         }
     }
 }

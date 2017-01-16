@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[CvrValues](
-	[Id] [int] NOT NULL,
-	[CvrNumber] [int] NULL,
+	[Id] [int] NOT NULL IDENTITY(1,1),
+	[CvrNumber] [int] NOT NULL,
 	[OrganizationName] [nvarchar](max) NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -18,3 +18,9 @@ PRIMARY KEY CLUSTERED
 )
 
 GO
+INSERT INTO [dbo].[CvrValues]([CvrNumber], [OrganizationName]) 
+	VALUES (29188505, 'Slagelse Kommune')
+INSERT INTO [dbo].[CvrValues]([CvrNumber], [OrganizationName]) 
+	VALUES (29188475, 'Faxe Kommune') 
+INSERT INTO [dbo].[CvrValues]([CvrNumber], [OrganizationName]) 
+	VALUES (64942212, 'KMD dk') 
