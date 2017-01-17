@@ -7,4 +7,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+<<<<<<< HEAD
+=======
+  <xs:complexType name="CompanyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CvrNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyInfo" nillable="true" type="tns:CompanyInfo" />
+>>>>>>> 9f2c527055af06535413a1095aedc330f5233965
 </xs:schema>

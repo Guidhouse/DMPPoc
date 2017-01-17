@@ -29,4 +29,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+<<<<<<< HEAD
+=======
+  <xs:element name="GetCompanyByCvrNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cvrNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompanyByCvrNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetCompanyByCvrNumberResult" nillable="true" type="q3:CompanyInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+>>>>>>> 9f2c527055af06535413a1095aedc330f5233965
 </xs:schema>

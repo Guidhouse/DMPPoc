@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.Web", "GeoDKPOCDMPTest.Web\GeoDKPOCDMPTest.Web.csproj", "{E9A5921A-2D74-49B3-B010-2C45308BE127}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0C14ECB-2C48-4A60-AB29-EEE1693F882A} = {F0C14ECB-2C48-4A60-AB29-EEE1693F882A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.Web.Tests", "GeoDKPOCDMPTest.Web.Tests\GeoDKPOCDMPTest.Web.Tests.csproj", "{EB8BC75C-2878-4FDF-8B9A-BC49EBCC1EF3}"
 EndProject

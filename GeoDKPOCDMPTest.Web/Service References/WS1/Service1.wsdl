@@ -19,6 +19,15 @@
   <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
+<<<<<<< HEAD
+=======
+  <wsdl:message name="IService1_GetCompanyByCvrNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyByCvrNumber" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCompanyByCvrNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyByCvrNumberResponse" />
+  </wsdl:message>
+>>>>>>> 9f2c527055af06535413a1095aedc330f5233965
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -28,6 +37,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
+<<<<<<< HEAD
+=======
+    <wsdl:operation name="GetCompanyByCvrNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCompanyByCvrNumber" message="tns:IService1_GetCompanyByCvrNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse" message="tns:IService1_GetCompanyByCvrNumber_OutputMessage" />
+    </wsdl:operation>
+>>>>>>> 9f2c527055af06535413a1095aedc330f5233965
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -49,6 +65,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+<<<<<<< HEAD
+=======
+    <wsdl:operation name="GetCompanyByCvrNumber">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCompanyByCvrNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+>>>>>>> 9f2c527055af06535413a1095aedc330f5233965
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
