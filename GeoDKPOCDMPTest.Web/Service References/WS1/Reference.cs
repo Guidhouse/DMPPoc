@@ -74,8 +74,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
     }
     
-<<<<<<< HEAD
-=======
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompanyInfo", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
@@ -136,8 +135,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             }
         }
     }
-    
->>>>>>> 9f2c527055af06535413a1095aedc330f5233965
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
     public interface IService1 {
@@ -153,15 +151,12 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
-<<<<<<< HEAD
-=======
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
         GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
         System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber);
->>>>>>> 9f2c527055af06535413a1095aedc330f5233965
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -206,8 +201,6 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
-<<<<<<< HEAD
-=======
         
         public GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber) {
             return base.Channel.GetCompanyByCvrNumber(cvrNumber);
@@ -216,6 +209,6 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber) {
             return base.Channel.GetCompanyByCvrNumberAsync(cvrNumber);
         }
->>>>>>> 9f2c527055af06535413a1095aedc330f5233965
+
     }
 }

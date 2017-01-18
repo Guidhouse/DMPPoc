@@ -191,6 +191,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WS1\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoDKPOCDMPTest.Shared\GeoDKPOCDMPTest.Shared.csproj">
+      <Project>{7e0b4b6a-eff8-42dd-95da-3f7b62866457}</Project>
+      <Name>GeoDKPOCDMPTest.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

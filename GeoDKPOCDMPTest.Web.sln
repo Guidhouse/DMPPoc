@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.WS1", "GeoD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.WS2", "GeoDKPOCDMPTest.WS2\GeoDKPOCDMPTest.WS2.csproj", "{6F07D85E-5A06-421A-B13D-3A0D17195BB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.Shared", "GeoDKPOCDMPTest.Shared\GeoDKPOCDMPTest.Shared.csproj", "{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{6F07D85E-5A06-421A-B13D-3A0D17195BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F07D85E-5A06-421A-B13D-3A0D17195BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F07D85E-5A06-421A-B13D-3A0D17195BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

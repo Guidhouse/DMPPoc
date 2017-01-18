@@ -8,7 +8,12 @@ using System.ServiceModel.Security;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Threading;
+
 using GeoDKPOCDMPTest.Web.Models;
+using GeoDKPOCDMPTest.Shared;
+using System.IdentityModel.Services;
+using System.Xml;
+using System.IO;
 
 namespace GeoDKPOCDMPTest.Web.Controllers
 {
@@ -22,15 +27,30 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             Thread.CurrentPrincipal = null;
             var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "urn:oid/0.9.2342.19200300.100.1.1")).Value;
             ViewBag.Name = uid;
+        
+            model.Msg = getValuesFromWs1(64942212);//No security and tied to 101kmd cvr.
 
-            model.Msg = getValuesFromWs1(64942212);
+            var identity = pClaim.Identity as ClaimsIdentity;
+            var token = identity.BootstrapContext as BootstrapContext;
+            if (token == null)
+            {
+                throw new ApplicationException("Cannot get boostrap context from current identity.");
+            }
+            try
+            {
+                var actasToken = GetTokenForActas(token);
+            }catch(Exception ex)
+            {
+                model.Msg = "Vi er kede men denne fejl opstod på DMP, da vi ville hente en ActAs-token: " + ex.Message;
+            }
+
             if (pClaim.IsInRole("proverolleB")) { model.Msg = "Du er B'er!"; }
             if (pClaim.IsInRole("proverolleA")) { model.Msg = "Du er A'er!"; }
             return View(model);
         }
 
 
-        private static ClaimsPrincipal GetClaimsIdentity()
+        private static ClaimsPrincipal GetClaimsIdentity()//Testing the user login.
         {
             var claimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
 
@@ -43,10 +63,11 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             return claimsPrincipal;
         }
 
+
+
+
         private string getValuesFromWs1(int value)
         {
-
-
             WS1.Service1Client WS1 = new Web.WS1.Service1Client();
             try
             {
@@ -57,31 +78,30 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             {
                 return "CVR-nummer kan ikke valideres";
             }
-
         }
 
-        private static WS2007FederationHttpBinding CreateServiceBindingDirectLogin()
+        private static SecurityToken GetTokenForActas(BootstrapContext token)
         {
-            // Lav binding til STS'en
-            var stsBinding = new WS2007HttpBinding(SecurityMode.Message, false);
-            stsBinding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
-            stsBinding.Security.Message.EstablishSecurityContext = false;
-            stsBinding.Security.Message.NegotiateServiceCredential = false;
-
-            // Lav binding til servicen
-            var serviceBinding = new WS2007FederationHttpBinding(WSFederationHttpSecurityMode.Message, false);
-            serviceBinding.Security.Message.AlgorithmSuite = SecurityAlgorithmSuite.Basic256;
-            serviceBinding.Security.Message.IssuedKeyType = SecurityKeyType.SymmetricKey;
-            serviceBinding.Security.Message.IssuedTokenType = "http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV1.1";
-            serviceBinding.Security.Message.NegotiateServiceCredential = false;
-            serviceBinding.Security.Message.IssuerAddress = System.Configuration.ConfigurationManager.AppSettings["StsIdentifyCertificateEndpointUserName_Uri"].; //Constants.StsAddressUserName;
-            serviceBinding.Security.Message.IssuerBinding = stsBinding;
-            serviceBinding.Security.Message.IssuerMetadataAddress = new EndpointAddress("https://log-in.test.miljoeportal.dk/runtime/services/trust/mex");
-
-            return serviceBinding;
+            var newToken = WsTrustClient.RequestSecurityTokenWithUserName(
+                Constants.StsAddressUserName,
+                Constants.StsCertificate,
+                Constants.DotNetServiceAddress,
+                Constants.DmpUserName,
+                Constants.DmpPassword,
+                EnsureBootstrapSecurityToken(token));
+            return newToken;
         }
 
-
+        private static SecurityToken EnsureBootstrapSecurityToken(BootstrapContext bootstrapContext)
+        {
+            if (bootstrapContext.SecurityToken != null)
+                return bootstrapContext.SecurityToken;
+            if (string.IsNullOrWhiteSpace(bootstrapContext.Token))
+                return null;
+            var handlers = FederatedAuthentication.FederationConfiguration.IdentityConfiguration.SecurityTokenHandlers;
+            return handlers.ReadToken(new XmlTextReader(new StringReader(bootstrapContext.Token)));
+        }
+        
 
     }
 }

@@ -1,0 +1,42 @@
+﻿using System.Net;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+
+namespace GeoDKPOCDMPTest.Shared
+{
+    public class CertificateWSTrustBinding : WSTrustBinding
+    {
+        public CertificateWSTrustBinding()
+            : this(SecurityMode.Message)
+        { }
+
+        public CertificateWSTrustBinding(SecurityMode securityMode)
+            : base(securityMode)
+        { }
+
+        protected override void ApplyTransportSecurity(HttpTransportBindingElement transport)
+        {
+            transport.AuthenticationScheme = AuthenticationSchemes.Anonymous;
+
+            var element = transport as HttpsTransportBindingElement;
+            if (element != null)
+            {
+                element.RequireClientCertificate = true;
+            }
+        }
+
+        protected override SecurityBindingElement CreateSecurityBindingElement()
+        {
+            if (SecurityMode.Message == SecurityMode)
+            {
+                return SecurityBindingElement.CreateMutualCertificateBindingElement();
+            }
+            if (SecurityMode.TransportWithMessageCredential == SecurityMode)
+            {
+                return SecurityBindingElement.CreateCertificateOverTransportBindingElement();
+            }
+
+            return null;
+        }
+    }
+}
