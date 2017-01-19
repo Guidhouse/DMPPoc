@@ -39,18 +39,29 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             try
             {
                 var actasToken = GetTokenForActas(token);
+                model.Msg = "We have a token.";
             }catch(Exception ex)
             {
-                model.Msg = "Vi er kede men denne fejl opstod på DMP, da vi ville hente en ActAs-token: " + ex.Message;
+                model.Msg = "Vi er kede af det, men denne fejl opstod på DMP, da vi ville hente en ActAs-token: " + ex.Message;
             }
 
-            if (pClaim.IsInRole("proverolleB")) { model.Msg = "Du er B'er!"; }
-            if (pClaim.IsInRole("proverolleA")) { model.Msg = "Du er A'er!"; }
+            if (pClaim.IsInRole("proverolleB")) { model.Msg = model.Msg + "Du er B'er!"; }
+            if (pClaim.IsInRole("proverolleA")) { model.Msg = model.Msg + "Du er A'er!"; }
             return View(model);
         }
 
+        public void SignOut()
+        {
+            string callbackUrl = Url.Action("Index", "Home", routeValues: null, protocol: Request.Url.Scheme);
 
-        private static ClaimsPrincipal GetClaimsIdentity()//Testing the user login.
+            // Alternativ logud kun lokalt
+
+
+            //WSFederationAuthenticationModule authModule = FederatedAuthentication.WSFederationAuthenticationModule;
+            //WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(callbackUrl));
+        }
+
+        private static ClaimsPrincipal GetClaimsIdentity()//Get the user from the login portal.
         {
             var claimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
 
@@ -85,7 +96,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var newToken = WsTrustClient.RequestSecurityTokenWithUserName(
                 Constants.StsAddressUserName,
                 Constants.StsCertificate,
-                Constants.DotNetServiceAddress,
+                Constants.DotNetServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
                 Constants.DmpPassword,
                 EnsureBootstrapSecurityToken(token));
