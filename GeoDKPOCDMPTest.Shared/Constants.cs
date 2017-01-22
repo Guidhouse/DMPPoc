@@ -44,6 +44,10 @@ namespace GeoDKPOCDMPTest.Shared
         {
             get { return GetX509Certificate(ConfigurationManager.AppSettings["StsIdentifyServiceCertificate"]); }
         }
+        public static X509Certificate2 StsPocCertificate
+        {
+            get { return GetX509Certificate(ConfigurationManager.AppSettings["StsPocIdentifyServiceCertificate"]); }
+        }
 
         private static X509Certificate2 GetX509Certificate(string base64)
         {
@@ -100,7 +104,15 @@ namespace GeoDKPOCDMPTest.Shared
                 X509FindType.FindByThumbprint,
                 "f8 a3 9b 92 74 dd e5 8b 79 bc 95 45 f5 57 a5 be 3e 1e 13 12");
         }
-
+        // Client certifikat til x509 authentication (TEST) KMDProveopgave PKI certifikat.
+        public static X509Certificate2 GetPocClientCertificateTest()
+        {
+            return CertUtil.GetCertificate(
+                StoreLocation.LocalMachine,
+                StoreName.My,
+                X509FindType.FindByThumbprint,
+                "ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");
+        }
         // Brugernavn til test dmp bruger
         public static string DmpUserName
         {
@@ -110,8 +122,10 @@ namespace GeoDKPOCDMPTest.Shared
             }
         }
         // Password til test dmp bruger (TESTMILJØ)
-        public static string DmpPassword {
-            get {
+        public static string DmpPassword
+        {
+            get
+            {
                 return ConfigurationManager.AppSettings["DmpPassword"];
             }
         }

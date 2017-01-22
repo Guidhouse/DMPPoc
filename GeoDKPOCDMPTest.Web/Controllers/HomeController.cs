@@ -28,7 +28,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "urn:oid/0.9.2342.19200300.100.1.1")).Value;
             ViewBag.Name = uid;
         
-            model.Msg = getValuesFromWs1(64942212);//No security and tied to 101kmd cvr.
+            //model.Msg = getValuesFromWs1(64942212);//No security and tied to 101kmd cvr.
 
             var identity = pClaim.Identity as ClaimsIdentity;
             var token = identity.BootstrapContext as BootstrapContext;
@@ -38,29 +38,19 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             }
             try
             {
-                var actasToken = GetTokenForActas(token);
-                model.Msg = "We have a token.";
+                var actasToken = GetTokenForActasWithCertificate(token);
+                model.Msg = model.Msg + " We have a token.";
             }catch(Exception ex)
             {
                 model.Msg = "Vi er kede af det, men denne fejl opstod på DMP, da vi ville hente en ActAs-token: " + ex.Message;
             }
 
-            if (pClaim.IsInRole("proverolleB")) { model.Msg = model.Msg + "Du er B'er!"; }
-            if (pClaim.IsInRole("proverolleA")) { model.Msg = model.Msg + "Du er A'er!"; }
+            if (pClaim.IsInRole("proverolleB")) { model.Msg = model.Msg + " Du er B'er!"; }
+            if (pClaim.IsInRole("proverolleA")) { model.Msg = model.Msg + " Du er A'er!"; }
             return View(model);
         }
 
-        public void SignOut()
-        {
-            string callbackUrl = Url.Action("Index", "Home", routeValues: null, protocol: Request.Url.Scheme);
-
-            // Alternativ logud kun lokalt
-
-
-            //WSFederationAuthenticationModule authModule = FederatedAuthentication.WSFederationAuthenticationModule;
-            //WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(callbackUrl));
-        }
-
+       
         private static ClaimsPrincipal GetClaimsIdentity()//Get the user from the login portal.
         {
             var claimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
@@ -77,18 +67,18 @@ namespace GeoDKPOCDMPTest.Web.Controllers
 
 
 
-        private string getValuesFromWs1(int value)
+       
+
+        private static SecurityToken GetTokenForActasWithCertificate(BootstrapContext token)
         {
-            WS1.Service1Client WS1 = new Web.WS1.Service1Client();
-            try
-            {
-                var cinfo = WS1.GetCompanyByCvrNumber(value);
-                return "Du er fra " + cinfo.Name;
-            }
-            catch
-            {
-                return "CVR-nummer kan ikke valideres";
-            }
+            var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
+               Constants.StsAddressCertificate,
+               Constants.StsPocCertificate,//Constants.StsPocCertificate, 
+               Constants.DotNetServiceAddress,
+               Constants.GetPocClientCertificateTest(),//Constants.GetPocClientCertificateTest(),
+               EnsureBootstrapSecurityToken(token));
+
+            return securityToken;
         }
 
         private static SecurityToken GetTokenForActas(BootstrapContext token)
@@ -102,6 +92,9 @@ namespace GeoDKPOCDMPTest.Web.Controllers
                 EnsureBootstrapSecurityToken(token));
             return newToken;
         }
+
+
+
 
         private static SecurityToken EnsureBootstrapSecurityToken(BootstrapContext bootstrapContext)
         {
