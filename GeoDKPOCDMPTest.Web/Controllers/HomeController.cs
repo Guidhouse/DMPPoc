@@ -28,7 +28,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             Thread.CurrentPrincipal = null;
             var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "identify/urn:oid:0.9.2342.19200300.100.1.1")).Value;
             ViewBag.Name = uid;
-            var sb = new StringBuilder();
+            var sb = new StringBuilder();   
             //foreach(var c in pClaim.Claims)//To list types and values of claims.
             //{
             //    sb.AppendLine(string.Format("type: {0} value: {1}", c.Type, c.Value));
