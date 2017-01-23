@@ -102,7 +102,7 @@ namespace GeoDKPOCDMPTest.Shared
                 StoreLocation.LocalMachine,
                 StoreName.My,
                 X509FindType.FindByThumbprint,
-                "f8 a3 9b 92 74 dd e5 8b 79 bc 95 45 f5 57 a5 be 3e 1e 13 12");
+                "f8 a3 9b 92 74 dd e5 8b 79 bc 95 45 f5 57 a5 be 3e 1e 13 12");//vnTest
         }
         // Client certifikat til x509 authentication (TEST) KMDProveopgave PKI certifikat.
         public static X509Certificate2 GetPocClientCertificateTest()
@@ -111,7 +111,8 @@ namespace GeoDKPOCDMPTest.Shared
                 StoreLocation.LocalMachine,
                 StoreName.My,
                 X509FindType.FindByThumbprint,
-                "ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");
+              "d9 18 ad 8c 49 57 9f 76 3d ab a1 3e 76 ba 20 ce 55 5a e0 3a");//GeoDKPOCDMPTest (funktionscertifikat)
+            //"ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");//KmdProveopgave
         }
         // Brugernavn til test dmp bruger
         public static string DmpUserName

@@ -73,9 +73,9 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         {
             var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
                Constants.StsAddressCertificate,
-               Constants.StsPocCertificate,//Constants.StsPocCertificate, 
+               Constants.StsPocCertificate,//Constants.StsCertificate, 
                Constants.DotNetServiceAddress,
-               Constants.GetPocClientCertificateTest(),//Constants.GetPocClientCertificateTest(),
+               Constants.GetPocClientCertificateTest(),//Constants.GetClientCertificateTest(),
                EnsureBootstrapSecurityToken(token));
 
             return securityToken;
@@ -88,8 +88,8 @@ namespace GeoDKPOCDMPTest.Web.Controllers
                 Constants.StsCertificate,
                 Constants.DotNetServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
-                Constants.DmpPassword,
-                EnsureBootstrapSecurityToken(token));
+                Constants.DmpPassword);//,
+                //EnsureBootstrapSecurityToken(token));
             return newToken;
         }
 
