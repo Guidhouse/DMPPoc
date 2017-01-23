@@ -14,6 +14,7 @@ using GeoDKPOCDMPTest.Shared;
 using System.IdentityModel.Services;
 using System.Xml;
 using System.IO;
+using System.Text;
 
 namespace GeoDKPOCDMPTest.Web.Controllers
 {
@@ -25,9 +26,14 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var pClaim = GetClaimsIdentity();
             var model = new PythagoraModel();           
             Thread.CurrentPrincipal = null;
-            var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "urn:oid/0.9.2342.19200300.100.1.1")).Value;
+            var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "identify/urn:oid:0.9.2342.19200300.100.1.1")).Value;
             ViewBag.Name = uid;
-        
+            var sb = new StringBuilder();
+            //foreach(var c in pClaim.Claims)//To list types and values of claims.
+            //{
+            //    sb.AppendLine(string.Format("type: {0} value: {1}", c.Type, c.Value));
+            //}
+            //model.Msg = sb.ToString();
             //model.Msg = getValuesFromWs1(64942212);//No security and tied to 101kmd cvr.
 
             var identity = pClaim.Identity as ClaimsIdentity;
@@ -74,7 +80,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
                Constants.StsAddressCertificate,
                Constants.StsPocCertificate,//Constants.StsCertificate, 
-               Constants.DotNetServiceAddress,
+               Constants.PocServiceAddress,// DotNetServiceAddress,
                Constants.GetPocClientCertificateTest(),//Constants.GetClientCertificateTest(),
                EnsureBootstrapSecurityToken(token));
 
@@ -88,8 +94,8 @@ namespace GeoDKPOCDMPTest.Web.Controllers
                 Constants.StsCertificate,
                 Constants.DotNetServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
-                Constants.DmpPassword);//,
-                //EnsureBootstrapSecurityToken(token));
+                Constants.DmpPassword,
+                EnsureBootstrapSecurityToken(token));
             return newToken;
         }
 

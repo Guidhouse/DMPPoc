@@ -54,6 +54,16 @@
     <Compile Include="WSTrustBinding.cs" />
     <Compile Include="WsTrustClient.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Items1.scx">
+      <Generator>SitecoreCodeGenerationTool</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Items1.scx.xslt">
+      <DependentUpon>Items1.scx</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

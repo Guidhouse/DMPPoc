@@ -74,6 +74,15 @@ namespace GeoDKPOCDMPTest.Shared
         {
             get { return ConfigurationManager.AppSettings["DotNetServiceCertifikatNavn"]; }
         }
+        private static string PocServiceAddressUrl
+        {
+            get { return ConfigurationManager.AppSettings["PocServiceURL"]; }
+        }
+
+        private static string PocServiceCertifikatName
+        {
+            get { return ConfigurationManager.AppSettings["PocServiceCertifikatNavn"]; }
+        }
 
 
         private static string JavaServiceAddressUrl
@@ -92,6 +101,7 @@ namespace GeoDKPOCDMPTest.Shared
         }
 
         public static readonly EndpointAddress DotNetServiceAddress = new EndpointAddress(new Uri(DotNetServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(DotNetServiceCertifikatName));
+        public static readonly EndpointAddress PocServiceAddress = new EndpointAddress(new Uri(PocServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(PocServiceCertifikatName));
 
         public static readonly EndpointAddress JavaServiceAddress = new EndpointAddress(new Uri(JavaServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(JavaServiceCertifikatName));
 
