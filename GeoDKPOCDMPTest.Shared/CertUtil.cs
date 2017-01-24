@@ -18,6 +18,7 @@ namespace GeoDKPOCDMPTest.Shared
                                                       string findValue)
         {
             var store = new X509Store(storeName, storeLocation);
+
             try
             {
                 store.Open(OpenFlags.ReadOnly);

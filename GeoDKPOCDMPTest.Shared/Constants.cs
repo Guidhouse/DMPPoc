@@ -118,11 +118,12 @@ namespace GeoDKPOCDMPTest.Shared
         public static X509Certificate2 GetPocClientCertificateTest()
         {
             return CertUtil.GetCertificate(
-                StoreLocation.LocalMachine,
+                StoreLocation.CurrentUser,
                 StoreName.My,
                 X509FindType.FindByThumbprint,
-              //"d9 18 ad 8c 49 57 9f 76 3d ab a1 3e 76 ba 20 ce 55 5a e0 3a");//GeoDKPOCDMPTest (funktionscertifikat)
-            "ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");//KmdProveopgave
+              //  "03 87 73 3f 0f f5 a2 10 6b 90 a3 f0 5f 9a 9d 3b 7b 55 6f a7");
+              "d9 18 ad 8c 49 57 9f 76 3d ab a1 3e 76 ba 20 ce 55 5a e0 3a");//GeoDKPOCDMPTest (funktionscertifikat)
+            //"ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");//KmdProveopgave
         }
         // Brugernavn til test dmp bruger
         public static string DmpUserName
