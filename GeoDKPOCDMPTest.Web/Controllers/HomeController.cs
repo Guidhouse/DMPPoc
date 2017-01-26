@@ -81,7 +81,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
                Constants.StsAddressCertificate,
                Constants.StsPocCertificate,//Constants.StsCertificate, 
                Constants.PocServiceAddress,// DotNetServiceAddress,
-               Constants.GetPocClientCertificateTest(),//Constants.GetClientCertificateTest(),
+               Constants.GetPocClientCertificateTest(),//,//Constants.GetClientCertificateTest(),
                EnsureBootstrapSecurityToken(token));
 
             return securityToken;
