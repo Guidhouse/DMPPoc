@@ -123,11 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\styles.css" />
+    <Content Include="Content\js\script.js" />
     <Content Include="Global.asax" />
-    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompositeType.datasource">
+    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompanyInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompanyInfo.datasource">
+    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.DataSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\WS1\Service1.disco" />
@@ -177,6 +178,15 @@
     <None Include="Service References\WS1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WS1\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS1\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS1\Service15.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,13 +202,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WS1\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GeoDKPOCDMPTest.Shared\GeoDKPOCDMPTest.Shared.csproj">
       <Project>{7e0b4b6a-eff8-42dd-95da-3f7b62866457}</Project>
       <Name>GeoDKPOCDMPTest.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

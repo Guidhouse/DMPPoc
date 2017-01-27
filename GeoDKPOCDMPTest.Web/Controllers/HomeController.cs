@@ -11,10 +11,13 @@ using System.Threading;
 
 using GeoDKPOCDMPTest.Web.Models;
 using GeoDKPOCDMPTest.Shared;
+using GeoDKPOCDMPTest.Web.Models;
+
 using System.IdentityModel.Services;
 using System.Xml;
 using System.IO;
 using System.Text;
+
 
 namespace GeoDKPOCDMPTest.Web.Controllers
 {
@@ -24,18 +27,24 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         public ActionResult Index()
         {
             var pClaim = GetClaimsIdentity();
-            var model = new PythagoraModel();           
-            Thread.CurrentPrincipal = null;
-            var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "identify/urn:oid:0.9.2342.19200300.100.1.1")).Value;
-            ViewBag.Name = uid;
-            var sb = new StringBuilder();   
-            //foreach(var c in pClaim.Claims)//To list types and values of claims.
-            //{
-            //    sb.AppendLine(string.Format("type: {0} value: {1}", c.Type, c.Value));
-            //}
-            //model.Msg = sb.ToString();
-            //model.Msg = getValuesFromWs1(64942212);//No security and tied to 101kmd cvr.
+            var model = new PythagoraModel();
 
+            var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "identify/urn:oid:0.9.2342.19200300.100.1.1")).Value;
+            var userCvr = int.Parse(pClaim.Claims.Single(c => string.Equals(c.Type, "identify/dk:gov:saml:attribute:CvrNumberIdentifier")).Value);
+
+            ViewBag.Name = uid;
+            var sb = new StringBuilder();//Get a list of claims..
+            foreach (var c in pClaim.Claims)//To list types and values of claims.
+            {
+                sb.AppendLine($"type: {c.Type} value: {c.Value}{Environment.NewLine}");
+            }
+            //model.Msg = $"{sb.ToString()} {Environment.NewLine}";
+
+            model.Msg = $"{model.Msg} Velkommen {uid}. {ServiceClient.getValuesFromWs1(userCvr)}. {Environment.NewLine}";//No security and tied to 101kmd cvr.
+
+            var role = pClaim.IsInRole("proverolleA") ? "dataredaktør" : pClaim.IsInRole("proverolleB") ? "længdeberegner" : "uden rettigheder";
+            model.Msg = model.Msg + $"Du er {role}.  {Environment.NewLine}";
+            
             var identity = pClaim.Identity as ClaimsIdentity;
             var token = identity.BootstrapContext as BootstrapContext;
             if (token == null)
@@ -44,19 +53,39 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             }
             try
             {
-                var actasToken = GetTokenForActasWithCertificate(token);
-                model.Msg = model.Msg + " We have a token.";
-            }catch(Exception ex)
-            {
-                model.Msg = "Vi er kede af det, men denne fejl opstod på DMP, da vi ville hente en ActAs-token: " + ex.Message;
+                var actasToken = GetTokenForActas(token);
+                model.Msg = model.Msg + " We have a uid/pw token.";
             }
+            catch (Exception ex)
+            {
+                model.Msg = model.Msg + $"Uid/pw DMP ActAs-token:  {ex.Message}{Environment.NewLine}";
+            }
+            try
+            {
+                var actasToken = GetTokenForActasWithCertificate(token);
+                model.Msg = model.Msg + " We have a cert token.";
+            }
+            catch (Exception ex)
+            {
+                model.Msg = model.Msg + $"Cert DMP ActAs-token: {ex.Message}{Environment.NewLine}";
+            }
+            model.Datasets = ServiceClient.getDataSets();
 
-            if (pClaim.IsInRole("proverolleB")) { model.Msg = model.Msg + " Du er B'er!"; }
-            if (pClaim.IsInRole("proverolleA")) { model.Msg = model.Msg + " Du er A'er!"; }
             return View(model);
         }
 
-       
+
+        public JsonResult sendData(int? A, int? B, int? C)
+        {
+            var pClaim = GetClaimsIdentity();
+            var uid = pClaim.Claims.Single(c => string.Equals(c.Type, "identify/urn:oid:0.9.2342.19200300.100.1.1")).Value;
+            var succes = ServiceClient.sendDataSetToService(A, B, C);
+
+            return (succes) ?
+                Json($"Ok {uid} indsendte data var {A}, {B}, {C}", JsonRequestBehavior.AllowGet) :
+                Json($"Desværre {uid} noget galt med: {A}, {B}, {C}", JsonRequestBehavior.AllowGet);
+        }
+
         private static ClaimsPrincipal GetClaimsIdentity()//Get the user from the login portal.
         {
             var claimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
@@ -69,11 +98,6 @@ namespace GeoDKPOCDMPTest.Web.Controllers
 
             return claimsPrincipal;
         }
-
-
-
-
-       
 
         private static SecurityToken GetTokenForActasWithCertificate(BootstrapContext token)
         {
@@ -91,15 +115,13 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         {
             var newToken = WsTrustClient.RequestSecurityTokenWithUserName(
                 Constants.StsAddressUserName,
-                Constants.StsCertificate,
+                Constants.StsPocCertificate,
                 Constants.DotNetServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
                 Constants.DmpPassword,
                 EnsureBootstrapSecurityToken(token));
             return newToken;
         }
-
-
 
 
         private static SecurityToken EnsureBootstrapSecurityToken(BootstrapContext bootstrapContext)
@@ -111,7 +133,5 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var handlers = FederatedAuthentication.FederationConfiguration.IdentityConfiguration.SecurityTokenHandlers;
             return handlers.ReadToken(new XmlTextReader(new StringReader(bootstrapContext.Token)));
         }
-        
-
     }
 }

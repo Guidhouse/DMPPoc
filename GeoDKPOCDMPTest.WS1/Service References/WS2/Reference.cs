@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoDKPOCDMPTest.Web.WS1 {
+namespace GeoDKPOCDMPTest.WS1.WS2 {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -75,7 +75,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS2.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
@@ -85,19 +85,19 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        GeoDKPOCDMPTest.Web.WS1.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
+        GeoDKPOCDMPTest.WS1.WS2.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.WS1.WS2.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : GeoDKPOCDMPTest.Web.WS1.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : GeoDKPOCDMPTest.WS1.WS2.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<GeoDKPOCDMPTest.Web.WS1.IService1>, GeoDKPOCDMPTest.Web.WS1.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<GeoDKPOCDMPTest.WS1.WS2.IService1>, GeoDKPOCDMPTest.WS1.WS2.IService1 {
         
         public Service1Client() {
         }
@@ -126,11 +126,11 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             return base.Channel.GetDataAsync(value);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
+        public GeoDKPOCDMPTest.WS1.WS2.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.WS1.WS2.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }

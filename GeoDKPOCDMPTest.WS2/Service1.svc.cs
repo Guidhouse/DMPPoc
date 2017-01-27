@@ -14,7 +14,7 @@ namespace GeoDKPOCDMPTest.WS2
     {
         public string GetData(int value)
         {
-            return string.Format("You entered: {0}", value);
+            return string.Format("You entered to Web service 2: {0}", value);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

@@ -1,49 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:64475/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" />
-  <xs:element name="GetData">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="value" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContract">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContractResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-<<<<<<< HEAD
-=======
-  <xs:element name="GetCompanyByCvrNumber">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="cvrNumber" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCompanyByCvrNumberResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetCompanyByCvrNumberResult" nillable="true" type="q3:CompanyInfo" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
->>>>>>> 9f2c527055af06535413a1095aedc330f5233965
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPythagorasValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PythagorasValue" nillable="true" type="tns:PythagorasValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPythagorasValue" nillable="true" type="tns:ArrayOfPythagorasValue" />
+  <xs:complexType name="PythagorasValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueA" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueB" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueC" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PythagorasValue" nillable="true" type="tns:PythagorasValue" />
 </xs:schema>

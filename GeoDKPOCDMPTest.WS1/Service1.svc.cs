@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-
-using System.Configuration;
-using System.Data.SqlClient;
 using GeoDKPOCDMPTest.WS1.Repositories;
+
 using System.Security.Claims;
 using System.Threading;
 
@@ -21,23 +16,55 @@ namespace GeoDKPOCDMPTest.WS1
 
         public CompanyInfo GetCompanyByCvrNumber(int cvrNumber)
         {
-            var identity = GetClaimsIdentity();
+           // var identity = GetClaimsIdentity();
             var cInfo = GetCompanyInfo(cvrNumber);
             return cInfo;
 
         }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public DataSet GetDatasets()
         {
-            if (composite == null)
+
+            var dataset = new DataSet();
+            dataset.PythagorasValues = GetDataRows();
+            return dataset;
+        }
+
+        public bool SetDataset(int? valueA, int? valueB, int? valueC)
+        {
+            if((valueA == null && valueB == null) || (valueB == null && valueC == null) || (valueA == null && valueC == null))
             {
-                throw new ArgumentNullException("composite");
+                var _error = new ErrorLog()
+                {
+                    Timestamp = DateTime.UtcNow,
+                    UserName = "unKnown",
+                    Email = "unKnown",
+                    Action = "Saving dataset",
+                    ErrorMessage = "More than one null in dataset"
+                };
+                logError(_error);
+                return false;
             }
-            if (composite.BoolValue)
+
+            if (valueA != null && valueB != null && valueC != null)
             {
-                composite.StringValue += "Suffix";
+                var _error = new ErrorLog()
+                {
+                    Timestamp = DateTime.UtcNow,
+                    UserName = "unKnown",
+                    Email = "unKnown",
+                    Action = "Saving dataset",
+                    ErrorMessage = "No empty data to fill in dataset"
+                };
+                logError(_error); return false;
             }
-            return composite;
+
+            var pythagorasValue = new PythagorasValue()
+            {
+                ValueA = valueA,
+                ValueB = valueB,
+                ValueC = valueC
+            };
+            return SavedataSet(pythagorasValue);
         }
 
         private static ClaimsIdentity GetClaimsIdentity()
@@ -76,6 +103,46 @@ namespace GeoDKPOCDMPTest.WS1
                 throw new FaultException(ex.Message, new FaultCode("01 CVR-fault"));
             }
         }
+        private List<PythagorasValue> GetDataRows()
+        {
+            var pInfo = new List<PythagorasValue>();
+            try
+            {
+                using (DB1Entities1 db = new DB1Entities1())
+                {
+                    pInfo = db.PythagorasValues.ToList();
+                }
+                return pInfo;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("02 Data-fault"));
+            }
+        }
+        private bool SavedataSet(PythagorasValue pythagorasValue)
+        {
+            using (DB1Entities1 db = new DB1Entities1())
+            {
+                db.PythagorasValues.Add(pythagorasValue);
+                db.SaveChanges();
+            }
+            return true;
+        }
 
+        private void logError(ErrorLog message)
+        {
+            try
+            {
+                using (DB1Entities1 db = new DB1Entities1())
+                {
+                    db.ErrorLogs.Add(message);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message, new FaultCode("02 Data-fault"));
+            }
+        }
     }
 }

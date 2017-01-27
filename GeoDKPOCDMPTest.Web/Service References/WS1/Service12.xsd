@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
-<<<<<<< HEAD
-=======
+  <xs:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" />
   <xs:complexType name="CompanyInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CvrNumber" type="xs:int" />
@@ -16,5 +8,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompanyInfo" nillable="true" type="tns:CompanyInfo" />
->>>>>>> 9f2c527055af06535413a1095aedc330f5233965
+  <xs:complexType name="DataSet">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" minOccurs="0" name="PythagorasValues" nillable="true" type="q1:ArrayOfPythagorasValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataSet" nillable="true" type="tns:DataSet" />
 </xs:schema>

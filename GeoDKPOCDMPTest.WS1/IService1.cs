@@ -14,15 +14,17 @@ namespace GeoDKPOCDMPTest.WS1
     public interface IService1
     {
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        [FaultContract(typeof(FaultException))]
+        CompanyInfo GetCompanyByCvrNumber(int cvrNummer);
 
         [OperationContract]
-        [FaultContract(
-        typeof(FaultException))]
-        CompanyInfo GetCompanyByCvrNumber(int cvrNumber);
+        [FaultContract(typeof(FaultException))]
+        DataSet GetDatasets();
 
+        [OperationContract]
+        [FaultContract(typeof(FaultException))]
+        bool SetDataset(int? valueA, int? valueB, int? valueC);
     }
-
 
     [DataContract]
     public class CompanyInfo
@@ -33,29 +35,10 @@ namespace GeoDKPOCDMPTest.WS1
         [DataMember]
         public int CvrNumber { get; set; }
     }
-
-
-
-
-
     [DataContract]
-    public class CompositeType
+    public class DataSet
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public List<Repositories.PythagorasValue> PythagorasValues { get; set; }
     }
 }

@@ -14,9 +14,9 @@ namespace GeoDKPOCDMPTest.Web.Models
     public class Dataset
     {
         public int Id { get; set; }
-        public float ValueA { get; set; }
-        public float ValueB { get; set; }
-        public float ValueC { get; set; }
+        public float? ValueA { get; set; }
+        public float? ValueB { get; set; }
+        public float? ValueC { get; set; }
     }
 
 }

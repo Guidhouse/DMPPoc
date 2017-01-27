@@ -118,7 +118,7 @@ namespace GeoDKPOCDMPTest.Shared
         public static X509Certificate2 GetPocClientCertificateTest()
         {
             return CertUtil.GetCertificate(
-                StoreLocation.LocalMachine,
+                StoreLocation.CurrentUser,
                 StoreName.My,
                 X509FindType.FindByThumbprint,
               //  "03 87 73 3f 0f f5 a2 10 6b 90 a3 f0 5f 9a 9d 3b 7b 55 6f a7");

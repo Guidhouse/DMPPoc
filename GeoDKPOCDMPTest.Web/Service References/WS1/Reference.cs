@@ -15,68 +15,6 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompanyInfo", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
     [System.SerializableAttribute()]
     public partial class CompanyInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -135,28 +73,169 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             }
         }
     }
-
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataSet", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.SerializableAttribute()]
+    public partial class DataSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GeoDKPOCDMPTest.Web.WS1.PythagorasValue[] PythagorasValuesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GeoDKPOCDMPTest.Web.WS1.PythagorasValue[] PythagorasValues {
+            get {
+                return this.PythagorasValuesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PythagorasValuesField, value) != true)) {
+                    this.PythagorasValuesField = value;
+                    this.RaisePropertyChanged("PythagorasValues");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PythagorasValue", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories")]
+    [System.SerializableAttribute()]
+    public partial class PythagorasValue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> ValueAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> ValueBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> ValueCField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> ValueA {
+            get {
+                return this.ValueAField;
+            }
+            set {
+                if ((this.ValueAField.Equals(value) != true)) {
+                    this.ValueAField = value;
+                    this.RaisePropertyChanged("ValueA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> ValueB {
+            get {
+                return this.ValueBField;
+            }
+            set {
+                if ((this.ValueBField.Equals(value) != true)) {
+                    this.ValueBField = value;
+                    this.RaisePropertyChanged("ValueB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> ValueC {
+            get {
+                return this.ValueCField;
+            }
+            set {
+                if ((this.ValueCField.Equals(value) != true)) {
+                    this.ValueCField = value;
+                    this.RaisePropertyChanged("ValueC");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        GeoDKPOCDMPTest.Web.WS1.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/GetCompanyByCvrNumberFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNummer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
-        GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber);
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/GetDatasetsFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        GeoDKPOCDMPTest.Web.WS1.DataSet GetDatasets();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.DataSet> GetDatasetsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/SetDatasetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        bool SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
+        System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -186,29 +265,28 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNummer) {
+            return base.Channel.GetCompanyByCvrNumber(cvrNummer);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer) {
+            return base.Channel.GetCompanyByCvrNumberAsync(cvrNummer);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public GeoDKPOCDMPTest.Web.WS1.DataSet GetDatasets() {
+            return base.Channel.GetDatasets();
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.Web.WS1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.DataSet> GetDatasetsAsync() {
+            return base.Channel.GetDatasetsAsync();
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNumber) {
-            return base.Channel.GetCompanyByCvrNumber(cvrNumber);
+        public bool SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
+            return base.Channel.SetDataset(valueA, valueB, valueC);
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNumber) {
-            return base.Channel.GetCompanyByCvrNumberAsync(cvrNumber);
+        public System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
+            return base.Channel.SetDatasetAsync(valueA, valueB, valueC);
         }
-
     }
 }

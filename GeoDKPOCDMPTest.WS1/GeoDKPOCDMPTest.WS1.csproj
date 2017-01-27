@@ -111,6 +111,16 @@
       <DependentUpon>DB1Model.edmx</DependentUpon>
       <LastGenOutput>DB1Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Service References\WS2\GeoDKPOCDMPTest.WS1.WS2.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WS2\Service1.disco" />
+    <None Include="Service References\WS2\configuration91.svcinfo" />
+    <None Include="Service References\WS2\configuration.svcinfo" />
+    <None Include="Service References\WS2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service1.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -141,6 +151,11 @@
     <Compile Include="Repositories\PythagorasValue.cs">
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WS2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -163,6 +178,16 @@
     <Content Include="Repositories\DB1Model.edmx.diagram">
       <DependentUpon>DB1Model.edmx</DependentUpon>
     </Content>
+    <None Include="Service References\WS2\Service1.wsdl" />
+    <None Include="Service References\WS2\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS2\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS2\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -176,6 +201,9 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WS2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
