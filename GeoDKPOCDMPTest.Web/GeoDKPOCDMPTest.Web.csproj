@@ -125,6 +125,9 @@
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\js\script.js" />
     <Content Include="Global.asax" />
+    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompanyInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>

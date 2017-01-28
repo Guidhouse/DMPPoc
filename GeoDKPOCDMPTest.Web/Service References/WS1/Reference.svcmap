@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fbb91043-959a-4721-9136-cb948ba5a426" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6ca3afa6-03c1-4b38-a69c-012df7385350" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,14 +22,14 @@
     <MetadataSource Address="https://GeoDKPOCDMPTestWS1.azurewebsites.net/service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="c591afc6-9e3b-49a1-867e-17c317614418" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?disco" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="e9892688-5888-47ed-bb0c-363bbb6191ec" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?wsdl" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="40ebb837-e509-4619-ba0a-8beaa3677a55" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd4" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="185c44d1-52f8-40df-b0d8-0d44fc571ff6" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="392f38d7-bf2b-46e1-ade8-e0720bb655dd" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="a0eb2245-0aab-4659-a1ca-6475e06f39df" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd3" />
-    <MetadataFile FileName="Service14.xsd" MetadataType="Schema" ID="45f5b5ae-b7fd-47c9-a138-865edd148d52" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service15.xsd" MetadataType="Schema" ID="0444cced-987e-4892-bce5-2fb204347d7a" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="c93f570f-8a10-41c0-a6ae-4d97bc62b08e" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="e2b25153-b399-4dc4-b684-ab0b8c5ecea1" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="b23a15b7-7551-4a60-84f2-6cf4757e58dc" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd4" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="588fe6ac-09a1-4526-a6a7-4114c763791d" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" />
+    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="9d452035-f3d7-4ad9-9f74-5e86c73101cd" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="d3e202f3-f325-4938-965f-9c9e3081fa1d" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service14.xsd" MetadataType="Schema" ID="9bc5be3c-f38d-49b4-9020-96a458c8187f" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service15.xsd" MetadataType="Schema" ID="e28ebbb6-24c8-46d8-9d2d-0bcd4e1e5c63" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

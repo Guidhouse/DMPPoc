@@ -67,6 +67,13 @@ namespace GeoDKPOCDMPTest.WS1
             return SavedataSet(pythagorasValue);
         }
 
+        public CalculatedDataSet CalculateDataSet(int Id)
+        {
+            return new CalculatedDataSet();
+        }
+
+
+
         private static ClaimsIdentity GetClaimsIdentity()
         {
             if (OperationContext.Current != null)

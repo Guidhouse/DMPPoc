@@ -115,8 +115,8 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         {
             var newToken = WsTrustClient.RequestSecurityTokenWithUserName(
                 Constants.StsAddressUserName,
-                Constants.StsPocCertificate,
-                Constants.DotNetServiceAddress, //JavaServiceAddress
+                Constants.StsCertificate,
+                Constants.DotNetServiceAddress,//PocServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
                 Constants.DmpPassword,
                 EnsureBootstrapSecurityToken(token));

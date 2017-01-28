@@ -212,6 +212,51 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CalculatedDataSet", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.SerializableAttribute()]
+    public partial class CalculatedDataSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GeoDKPOCDMPTest.Web.WS1.PythagorasValue PythagorasValuesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GeoDKPOCDMPTest.Web.WS1.PythagorasValue PythagorasValues {
+            get {
+                return this.PythagorasValuesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PythagorasValuesField, value) != true)) {
+                    this.PythagorasValuesField = value;
+                    this.RaisePropertyChanged("PythagorasValues");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
     public interface IService1 {
@@ -236,6 +281,13 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
         System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/CalculateDataSetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet CalculateDataSet(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet> CalculateDataSetAsync(int Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -287,6 +339,14 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         public System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
             return base.Channel.SetDatasetAsync(valueA, valueB, valueC);
+        }
+        
+        public GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet CalculateDataSet(int Id) {
+            return base.Channel.CalculateDataSet(Id);
+        }
+        
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet> CalculateDataSetAsync(int Id) {
+            return base.Channel.CalculateDataSetAsync(Id);
         }
     }
 }

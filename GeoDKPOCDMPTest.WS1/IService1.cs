@@ -24,6 +24,10 @@ namespace GeoDKPOCDMPTest.WS1
         [OperationContract]
         [FaultContract(typeof(FaultException))]
         bool SetDataset(int? valueA, int? valueB, int? valueC);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultException))]
+        CalculatedDataSet CalculateDataSet(int Id);
     }
 
     [DataContract]
@@ -41,4 +45,11 @@ namespace GeoDKPOCDMPTest.WS1
         [DataMember]
         public List<Repositories.PythagorasValue> PythagorasValues { get; set; }
     }
+    [DataContract]
+    public class CalculatedDataSet
+    {
+        [DataMember]
+        public Repositories.PythagorasValue PythagorasValues { get; set; }
+    }
+
 }

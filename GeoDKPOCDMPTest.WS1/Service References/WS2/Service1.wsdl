@@ -27,9 +27,9 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="https://geodkpocdmpws2.westeurope.cloudapp.azure.com/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="https://geodkpocdmpws2.westeurope.cloudapp.azure.com/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://geodkpocdmpws2.westeurope.cloudapp.azure.com/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2" />
+      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -78,7 +78,7 @@
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpsBinding_IService1" binding="tns:BasicHttpsBinding_IService1">
-      <soap:address location="https://geodkpocdmpws2.westeurope.cloudapp.azure.com/Service1.svc" />
+      <soap:address location="https://geodkpocdmptestws2.azurewebsites.net/Service1.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

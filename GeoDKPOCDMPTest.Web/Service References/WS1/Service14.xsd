@@ -43,4 +43,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CalculateDataSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CalculateDataSetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="CalculateDataSetResult" nillable="true" type="q3:CalculatedDataSet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

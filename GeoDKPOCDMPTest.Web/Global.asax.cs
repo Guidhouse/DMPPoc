@@ -17,6 +17,12 @@ namespace GeoDKPOCDMPTest.Web
 
             // Registrer event handler
             FederatedAuthentication.WSFederationAuthenticationModule.RedirectingToIdentityProvider += WSFederationAuthenticationModule_RedirectingToIdentityProvider;
+            //Ugly insecure hack
+            System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+    (se, cert, chain, sslerror) =>
+    {
+        return true;
+    };
         }
 
         void WSFederationAuthenticationModule_RedirectingToIdentityProvider(object sender, RedirectingToIdentityProviderEventArgs e)
