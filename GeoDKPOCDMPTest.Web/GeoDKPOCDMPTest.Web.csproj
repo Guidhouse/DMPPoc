@@ -123,8 +123,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\styles.css" />
-    <Content Include="Content\js\script.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -190,6 +197,7 @@
     <None Include="Service References\WS1\Service15.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Home\DataSetPicker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

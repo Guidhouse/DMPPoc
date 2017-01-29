@@ -277,10 +277,10 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/SetDatasetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        bool SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
+        string SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
-        System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
+        System.Threading.Tasks.Task<string> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/CalculateDataSetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
@@ -333,11 +333,11 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             return base.Channel.GetDatasetsAsync();
         }
         
-        public bool SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
+        public string SetDataset(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
             return base.Channel.SetDataset(valueA, valueB, valueC);
         }
         
-        public System.Threading.Tasks.Task<bool> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
+        public System.Threading.Tasks.Task<string> SetDatasetAsync(System.Nullable<int> valueA, System.Nullable<int> valueB, System.Nullable<int> valueC) {
             return base.Channel.SetDatasetAsync(valueA, valueB, valueC);
         }
         

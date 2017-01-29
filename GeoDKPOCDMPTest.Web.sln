@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.WS2", "GeoD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoDKPOCDMPTest.Shared", "GeoDKPOCDMPTest.Shared\GeoDKPOCDMPTest.Shared.csproj", "{7E0B4B6A-EFF8-42DD-95DA-3F7B62866457}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{24E75DE3-0965-40A2-BDD4-823CBC1F9041}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

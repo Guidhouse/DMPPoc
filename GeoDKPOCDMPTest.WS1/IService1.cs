@@ -23,7 +23,7 @@ namespace GeoDKPOCDMPTest.WS1
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        bool SetDataset(int? valueA, int? valueB, int? valueC);
+        string SetDataset(int? valueA, int? valueB, int? valueC);
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]

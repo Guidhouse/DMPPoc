@@ -29,8 +29,10 @@ namespace GeoDKPOCDMPTest.WS1
             return dataset;
         }
 
-        public bool SetDataset(int? valueA, int? valueB, int? valueC)
+        public string SetDataset(int? valueA, int? valueB, int? valueC)
         {
+            //isInRole etc.
+
             if((valueA == null && valueB == null) || (valueB == null && valueC == null) || (valueA == null && valueC == null))
             {
                 var _error = new ErrorLog()
@@ -42,7 +44,7 @@ namespace GeoDKPOCDMPTest.WS1
                     ErrorMessage = "More than one null in dataset"
                 };
                 logError(_error);
-                return false;
+                return _error.ErrorMessage;
             }
 
             if (valueA != null && valueB != null && valueC != null)
@@ -55,7 +57,8 @@ namespace GeoDKPOCDMPTest.WS1
                     Action = "Saving dataset",
                     ErrorMessage = "No empty data to fill in dataset"
                 };
-                logError(_error); return false;
+                logError(_error);
+                return _error.ErrorMessage;
             }
 
             var pythagorasValue = new PythagorasValue()
@@ -64,7 +67,11 @@ namespace GeoDKPOCDMPTest.WS1
                 ValueB = valueB,
                 ValueC = valueC
             };
-            return SavedataSet(pythagorasValue);
+            if (SavedataSet(pythagorasValue))
+            {
+                return "Ok"; 
+            }
+            return "Ukendt fejl: kontakt en relevant ansvarlig";
         }
 
         public CalculatedDataSet CalculateDataSet(int Id)

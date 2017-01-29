@@ -50,7 +50,7 @@ namespace GeoDKPOCDMPTest.Web.Models
             }
         }
 
-        public static bool sendDataSetToService(int? A, int? B, int? C)
+        public static string sendDataSetToService(int? A, int? B, int? C)
         {
             WS1.Service1Client WS1 = new WS1.Service1Client();
             try

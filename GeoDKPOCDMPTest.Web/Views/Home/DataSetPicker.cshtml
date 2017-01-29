@@ -1,0 +1,9 @@
+﻿@model IEnumerable<GeoDKPOCDMPTest.Web.Models.Dataset>
+    <option>Vælg et dataset til beregning</option>
+    @foreach (var set in Model)
+    {
+        var a = set.ValueA > 0 ? set.ValueA.ToString() : "Beregn";
+        var b = set.ValueB > 0 ? set.ValueB.ToString() : "Beregn";
+        var c = set.ValueC > 0 ? set.ValueC.ToString() : "Beregn";
+        <option value="id_@set.Id">ID: @set.Id: A:@a, B:@b, C:@c</option>
+    }
