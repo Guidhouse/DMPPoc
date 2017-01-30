@@ -15,6 +15,35 @@ namespace GeoDKPOCDMPTest.WS1.WS2 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CalculatedDataset", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2")]
+    [System.SerializableAttribute()]
+    public partial class CalculatedDataset : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -75,46 +104,52 @@ namespace GeoDKPOCDMPTest.WS1.WS2 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS2.IService1")]
-    public interface IService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS2.IService2")]
+    public interface IService2 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetData", ReplyAction="http://tempuri.org/IService2/GetDataResponse")]
         string GetData(int value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetData", ReplyAction="http://tempuri.org/IService2/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetDataSet", ReplyAction="http://tempuri.org/IService2/GetDataSetResponse")]
+        GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset GetDataSet(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetDataSet", ReplyAction="http://tempuri.org/IService2/GetDataSetResponse")]
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset> GetDataSetAsync(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService2/GetDataUsingDataContractResponse")]
         GeoDKPOCDMPTest.WS1.WS2.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService2/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService2/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<GeoDKPOCDMPTest.WS1.WS2.CompositeType> GetDataUsingDataContractAsync(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : GeoDKPOCDMPTest.WS1.WS2.IService1, System.ServiceModel.IClientChannel {
+    public interface IService2Channel : GeoDKPOCDMPTest.WS1.WS2.IService2, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<GeoDKPOCDMPTest.WS1.WS2.IService1>, GeoDKPOCDMPTest.WS1.WS2.IService1 {
+    public partial class Service2Client : System.ServiceModel.ClientBase<GeoDKPOCDMPTest.WS1.WS2.IService2>, GeoDKPOCDMPTest.WS1.WS2.IService2 {
         
-        public Service1Client() {
+        public Service2Client() {
         }
         
-        public Service1Client(string endpointConfigurationName) : 
+        public Service2Client(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
+        public Service2Client(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service2Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service2Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -124,6 +159,14 @@ namespace GeoDKPOCDMPTest.WS1.WS2 {
         
         public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
             return base.Channel.GetDataAsync(value);
+        }
+        
+        public GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset GetDataSet(int value) {
+            return base.Channel.GetDataSet(value);
+        }
+        
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset> GetDataSetAsync(int value) {
+            return base.Channel.GetDataSetAsync(value);
         }
         
         public GeoDKPOCDMPTest.WS1.WS2.CompositeType GetDataUsingDataContract(GeoDKPOCDMPTest.WS1.WS2.CompositeType composite) {

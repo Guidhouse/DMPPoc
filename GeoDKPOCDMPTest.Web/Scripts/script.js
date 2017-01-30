@@ -14,19 +14,22 @@ var dmpPoc = dmpPoc || {
                 dmpPoc.showMsg(data);
                 dmpPoc.loadDataSets();
             }).done(function () {
-                console.log('færdig');
-            })
+                dmpPoc.init();
+            }).fail(function () {
+                dmpPoc.showMsg('Kommunikationsfejl med backend. Log eventuelt ind igen.');
+                })
     },
 
     init: function () {
-        $('#saveDataButton').on('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+        $('#saveDataButton').one('click', function (e) {
             dmpPoc.sendData();
-
+            
         })
     },
-    loadDataSets(){
+    saveDataSet: function(){
+    },
+
+    loadDataSets: function(){
         $('#datasetPicker').load('home/DatasetPicker');
     },
 

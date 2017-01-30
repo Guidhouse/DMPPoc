@@ -111,10 +111,13 @@
       <DependentUpon>DB1Model.edmx</DependentUpon>
       <LastGenOutput>DB1Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Service References\WS2\GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\WS2\GeoDKPOCDMPTest.WS1.WS2.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\WS2\Service1.disco" />
+    <None Include="Service References\WS2\Service2.disco" />
     <None Include="Service References\WS2\configuration91.svcinfo" />
     <None Include="Service References\WS2\configuration.svcinfo" />
     <None Include="Service References\WS2\Reference.svcmap">
@@ -127,6 +130,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\DB1Repository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\CvrValue.cs">
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
@@ -178,14 +183,14 @@
     <Content Include="Repositories\DB1Model.edmx.diagram">
       <DependentUpon>DB1Model.edmx</DependentUpon>
     </Content>
-    <None Include="Service References\WS2\Service1.wsdl" />
-    <None Include="Service References\WS2\Service1.xsd">
+    <None Include="Service References\WS2\Service2.wsdl" />
+    <None Include="Service References\WS2\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WS2\Service11.xsd">
+    <None Include="Service References\WS2\Service21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WS2\Service12.xsd">
+    <None Include="Service References\WS2\Service22.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">

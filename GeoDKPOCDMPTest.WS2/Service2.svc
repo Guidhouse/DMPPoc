@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GeoDKPOCDMPTest.WS2.Service2" CodeBehind="Service2.svc.cs" %>

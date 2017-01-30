@@ -7,6 +7,7 @@ using GeoDKPOCDMPTest.WS1.Repositories;
 using System.Security.Claims;
 using System.Threading;
 
+
 namespace GeoDKPOCDMPTest.WS1
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -16,24 +17,40 @@ namespace GeoDKPOCDMPTest.WS1
 
         public CompanyInfo GetCompanyByCvrNumber(int cvrNumber)
         {
-           // var identity = GetClaimsIdentity();
-            var cInfo = GetCompanyInfo(cvrNumber);
+            // var identity = GetClaimsIdentity();
+            var rep = new DB1Repository();
+            var cInfo = rep.GetCompanyInfo(cvrNumber);
             return cInfo;
 
         }
         public DataSet GetDatasets()
         {
-
             var dataset = new DataSet();
-            dataset.PythagorasValues = GetDataRows();
+            var rep = new DB1Repository();
+            dataset.PythagorasValues = rep.GetDataSets();
             return dataset;
         }
 
         public string SetDataset(int? valueA, int? valueB, int? valueC)
         {
             //isInRole etc.
+            var rep = new DB1Repository();
+            if(valueA < 0 || valueB < 0 || valueC < 0)
+            {
+                var _error = new ErrorLog()
+                {
+                    Timestamp = DateTime.UtcNow,
+                    UserName = "unKnown",
+                    Email = "unKnown",
+                    Action = "Saving dataset",
+                    ErrorMessage = "This physical world does not support negative distances"
+                };
+                rep.logError(_error);
+                return _error.ErrorMessage;
+            }
 
-            if((valueA == null && valueB == null) || (valueB == null && valueC == null) || (valueA == null && valueC == null))
+
+            if ((valueA == null && valueB == null) || (valueB == null && valueC == null) || (valueA == null && valueC == null))
             {
                 var _error = new ErrorLog()
                 {
@@ -43,7 +60,7 @@ namespace GeoDKPOCDMPTest.WS1
                     Action = "Saving dataset",
                     ErrorMessage = "More than one null in dataset"
                 };
-                logError(_error);
+                rep.logError(_error);
                 return _error.ErrorMessage;
             }
 
@@ -57,7 +74,7 @@ namespace GeoDKPOCDMPTest.WS1
                     Action = "Saving dataset",
                     ErrorMessage = "No empty data to fill in dataset"
                 };
-                logError(_error);
+                rep.logError(_error);
                 return _error.ErrorMessage;
             }
 
@@ -67,7 +84,7 @@ namespace GeoDKPOCDMPTest.WS1
                 ValueB = valueB,
                 ValueC = valueC
             };
-            if (SavedataSet(pythagorasValue))
+            if (rep.SavedataSet(pythagorasValue))
             {
                 return "Ok"; 
             }
@@ -76,6 +93,7 @@ namespace GeoDKPOCDMPTest.WS1
 
         public CalculatedDataSet CalculateDataSet(int Id)
         {
+
             return new CalculatedDataSet();
         }
 
@@ -100,63 +118,6 @@ namespace GeoDKPOCDMPTest.WS1
 
             return identity;
         }
-
-        private CompanyInfo GetCompanyInfo(int cvrNumber)
-        {
-            var cInfo = new CompanyInfo();
-            try
-            {
-                using (DB1Entities1 db = new DB1Entities1())
-                {
-                    cInfo = db.CvrValues.Where(ci => ci.CvrNumber == cvrNumber).Select(ci => new CompanyInfo() { CvrNumber = ci.CvrNumber, Name = ci.OrganizationName }).First();
-                }
-                return cInfo;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("01 CVR-fault"));
-            }
-        }
-        private List<PythagorasValue> GetDataRows()
-        {
-            var pInfo = new List<PythagorasValue>();
-            try
-            {
-                using (DB1Entities1 db = new DB1Entities1())
-                {
-                    pInfo = db.PythagorasValues.ToList();
-                }
-                return pInfo;
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("02 Data-fault"));
-            }
-        }
-        private bool SavedataSet(PythagorasValue pythagorasValue)
-        {
-            using (DB1Entities1 db = new DB1Entities1())
-            {
-                db.PythagorasValues.Add(pythagorasValue);
-                db.SaveChanges();
-            }
-            return true;
-        }
-
-        private void logError(ErrorLog message)
-        {
-            try
-            {
-                using (DB1Entities1 db = new DB1Entities1())
-                {
-                    db.ErrorLogs.Add(message);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message, new FaultCode("02 Data-fault"));
-            }
-        }
+        
     }
 }
