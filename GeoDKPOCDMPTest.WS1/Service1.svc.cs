@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using GeoDKPOCDMPTest.WS1.Repositories;
-
+using GeoDKPOCDMPTest.WS1.Models;
 using System.Security.Claims;
 using System.Threading;
 
@@ -23,12 +23,13 @@ namespace GeoDKPOCDMPTest.WS1
             return cInfo;
 
         }
-        public DataSet GetDatasets()
+        public Datasets GetDatasets()
         {
-            var dataset = new DataSet();
+            var datasets = new Datasets();
             var rep = new DB1Repository();
-            dataset.PythagorasValues = rep.GetDataSets();
-            return dataset;
+            datasets.PythagorasValues = rep.GetDataSets();
+            
+            return datasets;
         }
 
         public string SetDataset(int? valueA, int? valueB, int? valueC)
@@ -78,7 +79,7 @@ namespace GeoDKPOCDMPTest.WS1
                 return _error.ErrorMessage;
             }
 
-            var pythagorasValue = new PythagorasValue()
+            var pythagorasValue = new Models.PythagorasValue()
             {
                 ValueA = valueA,
                 ValueB = valueB,
@@ -91,11 +92,6 @@ namespace GeoDKPOCDMPTest.WS1
             return "Ukendt fejl: kontakt en relevant ansvarlig";
         }
 
-        public CalculatedDataSet CalculateDataSet(int Id)
-        {
-
-            return new CalculatedDataSet();
-        }
 
 
 
@@ -118,6 +114,11 @@ namespace GeoDKPOCDMPTest.WS1
 
             return identity;
         }
-        
+
+        public CalculatedDataset CalculateDataSet(int id)
+        {
+            var calcSet = ServiceRepository.CalculateDataSet(id);
+            return calcSet;
+        }
     }
 }

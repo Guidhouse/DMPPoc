@@ -8,14 +8,13 @@ using System.ServiceModel.Security;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Threading;
-
-using GeoDKPOCDMPTest.Web.Models;
-using GeoDKPOCDMPTest.Shared;
-
 using System.IdentityModel.Services;
 using System.Xml;
 using System.IO;
 using System.Text;
+
+using GeoDKPOCDMPTest.Web.Models;
+using GeoDKPOCDMPTest.Shared;
 
 
 namespace GeoDKPOCDMPTest.Web.Controllers
@@ -88,6 +87,13 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             return (responseMessage == "Ok") ?
                 Json($"Ok {uid}, indsendte data var a = {inputA}, b = {inputB}, c= {inputC}", JsonRequestBehavior.AllowGet) :
                 Json($"Desværre {uid}. {inputA}, {inputB}, {inputC} Er ikke valide pga. følgende fejl: {responseMessage}", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CalculateDataset(int id)
+        {
+            var result = ServiceClient.GetCalculetedDataset(id);
+         //   var json = $"ID: {result.Id}, Message: \"{result.Message}\", A:{result.valueA}, B:{result.valueB}, C:{result.valueC}";
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         private static ClaimsPrincipal GetClaimsIdentity()//Get the user from the login portal.

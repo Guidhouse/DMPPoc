@@ -23,7 +23,7 @@
   <xs:element name="GetDatasetsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetDatasetsResult" nillable="true" type="q2:DataSet" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetDatasetsResult" nillable="true" type="q2:Datasets" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +53,7 @@
   <xs:element name="CalculateDataSetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="CalculateDataSetResult" nillable="true" type="q3:CalculatedDataSet" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="CalculateDataSetResult" nillable="true" type="q3:CalculatedDataset" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

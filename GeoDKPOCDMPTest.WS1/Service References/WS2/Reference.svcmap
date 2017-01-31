@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c1c45a5b-abf6-4a27-a964-257278779d55" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1fa9abf1-cf9c-40f0-97e0-34db4e4310c5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://GeoDKPOCDMPTestWs2.azurewebsites.net/Service2.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://GeoDKPOCDMPTestWs2.azurewebsites.net/Service2.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="efd82fae-f9fd-4e6f-bc20-d95a409d2d60" SourceId="1" SourceUrl="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service21.xsd" MetadataType="Schema" ID="ebdb9f18-38d8-4e42-8cea-b0683ecee66d" SourceId="1" SourceUrl="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service22.xsd" MetadataType="Schema" ID="6c4aee55-a2fd-4860-b799-3feb20bd225e" SourceId="1" SourceUrl="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service2.disco" MetadataType="Disco" ID="30727c90-1129-4a9b-a3f7-49bc9d0abff2" SourceId="1" SourceUrl="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?disco" />
-    <MetadataFile FileName="Service2.wsdl" MetadataType="Wsdl" ID="64dd0344-dbea-40c3-a024-0b37e8d7ebb0" SourceId="1" SourceUrl="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?wsdl" />
+    <MetadataFile FileName="Service2.wsdl" MetadataType="Wsdl" ID="1b17710f-cbb9-42cf-b2fe-24042d6ce451" SourceId="1" SourceUrl="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?wsdl" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="f9dde534-2a2d-473a-a251-34a5df442c2b" SourceId="1" SourceUrl="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service21.xsd" MetadataType="Schema" ID="e52f94bc-2cdf-4ef3-b143-593368a24631" SourceId="1" SourceUrl="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service2.disco" MetadataType="Disco" ID="b4c79a5c-809a-4f64-a262-9a9552aa3843" SourceId="1" SourceUrl="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?disco" />
+    <MetadataFile FileName="Service22.xsd" MetadataType="Schema" ID="dbeda144-6b87-4f95-96f0-d5cd62294196" SourceId="1" SourceUrl="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

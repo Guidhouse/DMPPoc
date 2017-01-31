@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
+using GeoDKPOCDMPTest.WS1.Models;
 
 namespace GeoDKPOCDMPTest.WS1.Repositories
 {
@@ -13,7 +14,7 @@ namespace GeoDKPOCDMPTest.WS1.Repositories
             var cInfo = new CompanyInfo();
             try
             {
-                using (DB1Entities1 db = new DB1Entities1())
+                using (DB1Entities1 db = new  DB1Entities1())
                 {
                     cInfo = db.CvrValues.Where(ci => ci.CvrNumber == cvrNumber).Select(ci => new CompanyInfo() { CvrNumber = ci.CvrNumber, Name = ci.OrganizationName }).First();
                 }
@@ -25,14 +26,24 @@ namespace GeoDKPOCDMPTest.WS1.Repositories
             }
         }
 
-        public List<PythagorasValue> GetDataSets()
+        public List<Dataset> GetDataSets()
         {
-            var pInfo = new List<PythagorasValue>();
+            var pInfo = new List<Dataset>();
             try
             {
                 using (DB1Entities1 db = new DB1Entities1())
                 {
-                    pInfo = db.PythagorasValues.ToList();
+                    var values = db.PythagorasValues.ToList();
+                    foreach (var val in values)
+                    {
+                        pInfo.Add(new Dataset()
+                        {
+                            Id = val.Id,
+                            ValueA = val.ValueA,
+                            ValueB = val.ValueB,
+                            ValueC = val.ValueC
+                        });
+                    }
                 }
                 return pInfo;
             }
@@ -42,9 +53,9 @@ namespace GeoDKPOCDMPTest.WS1.Repositories
             }
         }
 
-        public PythagorasValue GetDataSet(int id)
+        public Models.PythagorasValue GetDataSet(int id)
         {
-            var pInfo = new PythagorasValue();
+            var pInfo = new Models.PythagorasValue();
             try
             {
                 using (DB1Entities1 db = new DB1Entities1())
@@ -59,7 +70,7 @@ namespace GeoDKPOCDMPTest.WS1.Repositories
             }
         }
 
-        public bool SavedataSet(PythagorasValue pythagorasValue)
+        public bool SavedataSet(Models.PythagorasValue pythagorasValue)
         {
             using (DB1Entities1 db = new DB1Entities1())
             {

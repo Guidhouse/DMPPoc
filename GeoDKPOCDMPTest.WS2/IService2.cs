@@ -12,22 +12,40 @@ namespace GeoDKPOCDMPTest.WS2
     [ServiceContract]
     public interface IService2
     {
-        [OperationContract]
-        CalculatedDataset GetCalculatedDataSet(int value);
-    }
+        //[OperationContract]
+        //CalculatedDataset GetCalculatedDataSet(PythagorasDataset value);
 
+        [OperationContract]
+        CalculatedDataset GetCalculatedDataSet(int id, int? ValueA, int? ValueB, int? ValueC);
+
+    }
+    [DataContract]
+    public class PythagorasDataset
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public int? ValueA { get; set; }
+        [DataMember]
+        public int? ValueB { get; set; }
+        [DataMember]
+        public int? ValueC { get; set; }
+    }
+    
     [DataContract]
     public class CalculatedDataset
     {
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        float valueA { get; set; }
+        public int DB1id { get; set; }
         [DataMember]
-        float valueB { get; set; }
+        public double ValueA { get; set; }
         [DataMember]
-        float valueC { get; set; }
+        public double ValueB { get; set; }
         [DataMember]
-        string Message { get; set; }
+        public double ValueC { get; set; }
+        [DataMember]
+        public string Message { get; set; }
     }
 }

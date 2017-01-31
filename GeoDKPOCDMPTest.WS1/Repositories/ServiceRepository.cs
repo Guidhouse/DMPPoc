@@ -2,21 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GeoDKPOCDMPTest.WS1.Models;
 
 namespace GeoDKPOCDMPTest.WS1.Repositories
 {
     public static class ServiceRepository
     {
-        public static string CalculateDataSet(int Id)
+        public static CalculatedDataset CalculateDataSet(int id)
         {
+            var db1 = new DB1Repository();
+            var rawData = db1.GetDataSet(id);
 
-            var calculatedDataset = "";// new CalculatedDataSet();
-            using (var serviceClient = new WS2.Service2Client())
-            {
-                calculatedDataset = serviceClient.GetData(3);
+            if (rawData != null)
+            {       
+                //var calculatedDataset = new WS2.CalculatedDataset();
+                var serviceClient = new WS2.Service2Client();
+                var calculatedDataset = serviceClient.GetCalculatedDataSet(rawData.Id, rawData.ValueA, rawData.ValueB, rawData.ValueC);
+                var returnSet = new CalculatedDataset()
+                {
+                    Id = calculatedDataset.Id,
+                    ValueA = calculatedDataset.ValueA,
+                    ValueB = calculatedDataset.ValueB,
+                    ValueC = calculatedDataset.ValueC,
+                    Message = calculatedDataset.Message
+                };
+
+                return returnSet;
+               
+
             }
-
-            return calculatedDataset;
+            else
+            {
+                throw new Exception("No row with that Id");
+            }
+         
+            
         }
     }
 }

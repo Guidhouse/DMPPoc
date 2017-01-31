@@ -1,5 +1,5 @@
 ﻿body {
-    background:wheat;
+    background:linen;
 }
 
 .container{
@@ -16,7 +16,7 @@
 }
 
 .nice-blue{
-    background:linear-gradient( to bottom, aliceblue, lightblue 20%);
+    background:linear-gradient( to top, yellowgreen, lightblue 15%, lightblue 85%,  aliceblue 95%);
     padding:1em;
     margin:0.5em;
     border-radius:.5em;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" />
   <xs:complexType name="CompanyInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CvrNumber" type="xs:int" />
@@ -8,16 +7,35 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompanyInfo" nillable="true" type="tns:CompanyInfo" />
-  <xs:complexType name="DataSet">
+  <xs:complexType name="Datasets">
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" minOccurs="0" name="PythagorasValues" nillable="true" type="q1:ArrayOfPythagorasValue" />
+      <xs:element minOccurs="0" name="PythagorasValues" nillable="true" type="tns:ArrayOfDataset" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DataSet" nillable="true" type="tns:DataSet" />
-  <xs:complexType name="CalculatedDataSet">
+  <xs:element name="Datasets" nillable="true" type="tns:Datasets" />
+  <xs:complexType name="ArrayOfDataset">
     <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" minOccurs="0" name="PythagorasValues" nillable="true" type="q2:PythagorasValue" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Dataset" nillable="true" type="tns:Dataset" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CalculatedDataSet" nillable="true" type="tns:CalculatedDataSet" />
+  <xs:element name="ArrayOfDataset" nillable="true" type="tns:ArrayOfDataset" />
+  <xs:complexType name="Dataset">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueA" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueB" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueC" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Dataset" nillable="true" type="tns:Dataset" />
+  <xs:complexType name="CalculatedDataset">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueA" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueB" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueC" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalculatedDataset" nillable="true" type="tns:CalculatedDataset" />
 </xs:schema>

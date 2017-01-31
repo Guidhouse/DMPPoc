@@ -32,7 +32,6 @@
       <xsd:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" />
       <xsd:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
-      <xsd:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetCompanyByCvrNumber_InputMessage">
@@ -93,6 +92,57 @@
       <wsdl:fault wsaw:Action="http://tempuri.org/IService1/CalculateDataSetFaultExceptionFault" name="FaultExceptionFault" message="tns:IService1_CalculateDataSet_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyByCvrNumber">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCompanyByCvrNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasets">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDatasets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetDataset">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetDataset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateDataSet">
+      <soap:operation soapAction="http://tempuri.org/IService1/CalculateDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="BasicHttpsBinding_IService1" type="tns:IService1">
     <wsp:PolicyReference URI="#BasicHttpsBinding_IService1_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -146,6 +196,9 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://geodkpocdmptestws1.azurewebsites.net/Service1.svc" />
+    </wsdl:port>
     <wsdl:port name="BasicHttpsBinding_IService1" binding="tns:BasicHttpsBinding_IService1">
       <soap:address location="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc" />
     </wsdl:port>

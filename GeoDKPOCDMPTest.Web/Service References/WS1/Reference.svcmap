@@ -25,7 +25,6 @@
     <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="f59a2c81-0bc3-4cff-8d02-26845ac408c4" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?disco" />
     <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="f5f22792-ba56-4cc2-b948-0a1965c5e7b3" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?wsdl" />
     <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="1fb65710-f8ca-4ac6-bbed-77ac9609512e" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd4" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="e6ce695c-ac95-4852-8afb-2238548504ea" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd5" />
     <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="c9371039-4f91-4e8e-8934-85c9098547b2" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" />
     <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="cf197e0c-aae4-4885-bcc8-e460382b2481" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd3" />
     <MetadataFile FileName="Service14.xsd" MetadataType="Schema" ID="dcbcf09d-a0ee-4f4e-851d-52b6804d2a8e" SourceId="1" SourceUrl="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd0" />

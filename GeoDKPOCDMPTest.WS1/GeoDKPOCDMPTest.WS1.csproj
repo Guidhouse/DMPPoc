@@ -74,10 +74,6 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.Linq" />
@@ -101,20 +97,17 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Repositories\DB1Model.Context.tt">
+    <Content Include="Models\DB1Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB1Model.edmx</DependentUpon>
       <LastGenOutput>DB1Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Repositories\DB1Model.tt">
+    <Content Include="Models\DB1Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB1Model.edmx</DependentUpon>
       <LastGenOutput>DB1Model.cs</LastGenOutput>
     </Content>
     <Content Include="Service References\WS2\GeoDKPOCDMPTest.WS1.WS2.CalculatedDataset.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WS2\GeoDKPOCDMPTest.WS1.WS2.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\WS2\Service2.disco" />
@@ -132,28 +125,28 @@
   <ItemGroup>
     <Compile Include="Repositories\DB1Repository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
-    <Compile Include="Repositories\CvrValue.cs">
+    <Compile Include="Models\CvrValue.cs">
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\DB1Model.Context.cs">
+    <Compile Include="Models\DB1Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB1Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\DB1Model.cs">
+    <Compile Include="Models\DB1Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\DB1Model.Designer.cs">
+    <Compile Include="Models\DB1Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB1Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\ErrorLog.cs">
+    <Compile Include="Models\ErrorLog.cs">
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\PythagorasValue.cs">
+    <Compile Include="Models\PythagorasValue.cs">
       <DependentUpon>DB1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Service References\WS2\Reference.cs">
@@ -176,11 +169,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <EntityDeploy Include="Repositories\DB1Model.edmx">
+    <EntityDeploy Include="Models\DB1Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB1Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Repositories\DB1Model.edmx.diagram">
+    <Content Include="Models\DB1Model.edmx.diagram">
       <DependentUpon>DB1Model.edmx</DependentUpon>
     </Content>
     <None Include="Service References\WS2\Service2.wsdl" />

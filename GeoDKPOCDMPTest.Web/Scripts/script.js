@@ -14,6 +14,7 @@ var dmpPoc = dmpPoc || {
                 dmpPoc.showMsg(data);
                 dmpPoc.loadDataSets();
             }).done(function () {
+                $('#pocForm input[type="number"]').val('');
                 dmpPoc.init();
             }).fail(function () {
                 dmpPoc.showMsg('Kommunikationsfejl med backend. Log eventuelt ind igen.');
@@ -21,12 +22,27 @@ var dmpPoc = dmpPoc || {
     },
 
     init: function () {
-        $('#saveDataButton').one('click', function (e) {
+        $('#saveDataButton').off();
+        $('#saveDataButton').on('click', function (e) {
             dmpPoc.sendData();
-            
-        })
+        });
+        $('#calculateButton').off();
+        $('#calculateButton').on('click', function (e) {
+            dmpPoc.getCalculatedDataSet();
+        });
+        
     },
-    saveDataSet: function(){
+    getCalculatedDataSet: function () {
+        var id = $('#datasetPicker option:selected').val().substr(3);
+        var url = '/home/calculateDataset?id=' + id;
+        $.post(url, function (data) {
+            var msg = data.Message + '\nA= ' + data.ValueA + '\nB = ' + data.ValueB + '\nC = ' + data.ValueC;
+            dmpPoc.showMsg(msg);
+        }).done(function () {
+            dmpPoc.init();
+        }).fail(function () {
+            dmpPoc.showMsg('You failed getting data.');
+        });
     },
 
     loadDataSets: function(){

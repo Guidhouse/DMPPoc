@@ -1,11 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using System.Net.Security;
+
 
 namespace GeoDKPOCDMPTest.WS1
 {
@@ -19,7 +17,7 @@ namespace GeoDKPOCDMPTest.WS1
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        DataSet GetDatasets();
+        Datasets GetDatasets();
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]
@@ -27,7 +25,7 @@ namespace GeoDKPOCDMPTest.WS1
 
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        CalculatedDataSet CalculateDataSet(int Id);
+        CalculatedDataset CalculateDataSet(int Id);
     }
 
     [DataContract]
@@ -40,16 +38,37 @@ namespace GeoDKPOCDMPTest.WS1
         public int CvrNumber { get; set; }
     }
     [DataContract]
-    public class DataSet
+    public class Datasets
     {
         [DataMember]
-        public List<Repositories.PythagorasValue> PythagorasValues { get; set; }
-    }
-    [DataContract]
-    public class CalculatedDataSet
-    {
-        [DataMember]
-        public Repositories.PythagorasValue PythagorasValues { get; set; }
+        public List<Dataset> PythagorasValues { get; set; }
     }
 
+    [DataContract]
+    public class Dataset
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public int? ValueA { get; set; }
+        [DataMember]
+        public int? ValueB { get; set; }
+        [DataMember]
+        public int? ValueC { get; set; }
+    }
+
+    [DataContract]
+    public class CalculatedDataset
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public double ValueA { get; set; }
+        [DataMember]
+        public double ValueB { get; set; }
+        [DataMember]
+        public double ValueC { get; set; }
+        [DataMember]
+        public string Message { get; set; }
+    }
 }

@@ -76,15 +76,15 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DataSet", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Datasets", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
     [System.SerializableAttribute()]
-    public partial class DataSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Datasets : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GeoDKPOCDMPTest.Web.WS1.PythagorasValue[] PythagorasValuesField;
+        private GeoDKPOCDMPTest.Web.WS1.Dataset[] PythagorasValuesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -97,7 +97,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public GeoDKPOCDMPTest.Web.WS1.PythagorasValue[] PythagorasValues {
+        public GeoDKPOCDMPTest.Web.WS1.Dataset[] PythagorasValues {
             get {
                 return this.PythagorasValuesField;
             }
@@ -121,9 +121,9 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PythagorasValue", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1.Repositories")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Dataset", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
     [System.SerializableAttribute()]
-    public partial class PythagorasValue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Dataset : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -132,13 +132,13 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> ValueAField;
+        private System.Nullable<int> ValueAField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> ValueBField;
+        private System.Nullable<int> ValueBField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> ValueCField;
+        private System.Nullable<int> ValueCField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -164,7 +164,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> ValueA {
+        public System.Nullable<int> ValueA {
             get {
                 return this.ValueAField;
             }
@@ -177,7 +177,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> ValueB {
+        public System.Nullable<int> ValueB {
             get {
                 return this.ValueBField;
             }
@@ -190,7 +190,7 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> ValueC {
+        public System.Nullable<int> ValueC {
             get {
                 return this.ValueCField;
             }
@@ -214,15 +214,27 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CalculatedDataSet", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CalculatedDataset", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
     [System.SerializableAttribute()]
-    public partial class CalculatedDataSet : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class CalculatedDataset : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GeoDKPOCDMPTest.Web.WS1.PythagorasValue PythagorasValuesField;
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueBField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueCField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -235,14 +247,66 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public GeoDKPOCDMPTest.Web.WS1.PythagorasValue PythagorasValues {
+        public int Id {
             get {
-                return this.PythagorasValuesField;
+                return this.IdField;
             }
             set {
-                if ((object.ReferenceEquals(this.PythagorasValuesField, value) != true)) {
-                    this.PythagorasValuesField = value;
-                    this.RaisePropertyChanged("PythagorasValues");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double ValueA {
+            get {
+                return this.ValueAField;
+            }
+            set {
+                if ((this.ValueAField.Equals(value) != true)) {
+                    this.ValueAField = value;
+                    this.RaisePropertyChanged("ValueA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double ValueB {
+            get {
+                return this.ValueBField;
+            }
+            set {
+                if ((this.ValueBField.Equals(value) != true)) {
+                    this.ValueBField = value;
+                    this.RaisePropertyChanged("ValueB");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double ValueC {
+            get {
+                return this.ValueCField;
+            }
+            set {
+                if ((this.ValueCField.Equals(value) != true)) {
+                    this.ValueCField = value;
+                    this.RaisePropertyChanged("ValueC");
                 }
             }
         }
@@ -270,10 +334,10 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/GetDatasetsFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        GeoDKPOCDMPTest.Web.WS1.DataSet GetDatasets();
+        GeoDKPOCDMPTest.Web.WS1.Datasets GetDatasets();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.DataSet> GetDatasetsAsync();
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.Datasets> GetDatasetsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/SetDatasetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
@@ -284,10 +348,10 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/CalculateDataSetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet CalculateDataSet(int Id);
+        GeoDKPOCDMPTest.Web.WS1.CalculatedDataset CalculateDataSet(int Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet> CalculateDataSetAsync(int Id);
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataset> CalculateDataSetAsync(int Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -325,11 +389,11 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             return base.Channel.GetCompanyByCvrNumberAsync(cvrNummer);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.DataSet GetDatasets() {
+        public GeoDKPOCDMPTest.Web.WS1.Datasets GetDatasets() {
             return base.Channel.GetDatasets();
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.DataSet> GetDatasetsAsync() {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.Datasets> GetDatasetsAsync() {
             return base.Channel.GetDatasetsAsync();
         }
         
@@ -341,11 +405,11 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             return base.Channel.SetDatasetAsync(valueA, valueB, valueC);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet CalculateDataSet(int Id) {
+        public GeoDKPOCDMPTest.Web.WS1.CalculatedDataset CalculateDataSet(int Id) {
             return base.Channel.CalculateDataSet(Id);
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataSet> CalculateDataSetAsync(int Id) {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataset> CalculateDataSetAsync(int Id) {
             return base.Channel.CalculateDataSetAsync(Id);
         }
     }

@@ -27,66 +27,40 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2" />
+      <xsd:import schemaLocation="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS2" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService2_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IService2_GetCalculatedDataSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalculatedDataSet" />
   </wsdl:message>
-  <wsdl:message name="IService2_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService2_GetDataSet_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataSet" />
-  </wsdl:message>
-  <wsdl:message name="IService2_GetDataSet_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataSetResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService2_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IService2_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  <wsdl:message name="IService2_GetCalculatedDataSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalculatedDataSetResponse" />
   </wsdl:message>
   <wsdl:portType name="IService2">
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService2/GetData" message="tns:IService2_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService2/GetDataResponse" message="tns:IService2_GetData_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDataSet">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService2/GetDataSet" message="tns:IService2_GetDataSet_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService2/GetDataSetResponse" message="tns:IService2_GetDataSet_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService2/GetDataUsingDataContract" message="tns:IService2_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService2/GetDataUsingDataContractResponse" message="tns:IService2_GetDataUsingDataContract_OutputMessage" />
+    <wsdl:operation name="GetCalculatedDataSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService2/GetCalculatedDataSet" message="tns:IService2_GetCalculatedDataSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService2/GetCalculatedDataSetResponse" message="tns:IService2_GetCalculatedDataSet_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService2" type="tns:IService2">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCalculatedDataSet">
+      <soap:operation soapAction="http://tempuri.org/IService2/GetCalculatedDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="BasicHttpsBinding_IService2" type="tns:IService2">
     <wsp:PolicyReference URI="#BasicHttpsBinding_IService2_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService2/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDataSet">
-      <soap:operation soapAction="http://tempuri.org/IService2/GetDataSet" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService2/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="GetCalculatedDataSet">
+      <soap:operation soapAction="http://tempuri.org/IService2/GetCalculatedDataSet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -96,6 +70,9 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service2">
+    <wsdl:port name="BasicHttpBinding_IService2" binding="tns:BasicHttpBinding_IService2">
+      <soap:address location="http://geodkpocdmptestws2.azurewebsites.net/Service2.svc" />
+    </wsdl:port>
     <wsdl:port name="BasicHttpsBinding_IService2" binding="tns:BasicHttpsBinding_IService2">
       <soap:address location="https://geodkpocdmptestws2.azurewebsites.net/Service2.svc" />
     </wsdl:port>
