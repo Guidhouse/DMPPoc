@@ -15,7 +15,9 @@ using System.Text;
 
 using GeoDKPOCDMPTest.Web.Models;
 using GeoDKPOCDMPTest.Shared;
-
+using System.Security.Cryptography.X509Certificates;
+using GeoDKPOCDMPTest.Shared.Contracts;
+using GeoDKPOCDMPTest.Shared.Contract;
 
 namespace GeoDKPOCDMPTest.Web.Controllers
 {
@@ -68,12 +70,15 @@ namespace GeoDKPOCDMPTest.Web.Controllers
                 model.Msg = model.Msg + $"Cert DMP ActAs-token: {ex.Message}{Environment.NewLine}";
             }
 
+            var ls = getValuesFromWs1WT(token);
+            model.Msg = model.Msg + ls;
+
             model.Datasets = ServiceClient.getDataSets();
             return View(model);
         }
         public PartialViewResult DataSetPicker()
         {
-            var model = new List<Dataset>();
+            var model = new List<WebDataset>();
             model = ServiceClient.getDataSets();
             return PartialView(model);
         }
@@ -96,6 +101,62 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public static string getValuesFromWs1WT(BootstrapContext token)
+        {
+            var uid = "101kmd";
+            var pw = "g_3R_Lo45_XjC";
+            var serviceToken = WsTrustClient.RequestSecurityTokenWithUserName(
+                Constants.StsAddressUserName,
+                Constants.StsCertificate,
+                Constants.DotNetServiceAddress,//PocServiceAddress, //JavaServiceAddress
+                Constants.DmpUserName,
+                Constants.DmpPassword,
+                EnsureBootstrapSecurityToken(token));
+
+            //var serviceToken = GetToken("330kmd", "Yd4_6G_e_7s");
+
+            // Lav binding til STS'en
+            var stsBinding = WsTrustClient.GetStsBinding();
+
+            // Lav binding til servicen
+            var serviceBinding = WsTrustClient.GetServiceBinding(stsBinding, Constants.StsAddressUserName, true);
+
+            // Lav channel til servicen
+            var channelFactory = new ChannelFactory<IServiceContract>(serviceBinding, Constants.PocServiceAddress);
+
+            if (channelFactory.Credentials == null)
+                throw new ApplicationException("ChannelFactory must have credentials");
+
+            // Deaktiver service cert validering
+            channelFactory.Credentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                X509CertificateValidationMode.None;
+            channelFactory.Credentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
+
+            // Påhæft token til kald til service
+            var channel = channelFactory.CreateChannelWithIssuedToken(serviceToken);
+            try
+            {
+                var query = new HelloWorldQuery
+                {
+                    Text = "Jesper Hvid"
+                };
+                var msg = channel.HelloWorld(query);
+                return msg.Text;
+
+            }catch(Exception ex)
+            {
+                var msg = ex.Message;
+                return msg;
+            }
+
+
+        }
+
+
+
+
+
+
         private static ClaimsPrincipal GetClaimsIdentity()//Get the user from the login portal.
         {
             var claimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
@@ -113,9 +174,9 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         {
             var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
                Constants.StsAddressCertificate,
-               Constants.StsPocCertificate,//Constants.StsCertificate, 
+               Constants.StsPocCertificate,// KMDProveopgave  Encryption certifikat
                Constants.PocServiceAddress,// DotNetServiceAddress,
-               Constants.GetPocClientCertificateTest(),//,//Constants.GetClientCertificateTest(),
+               Constants.GetPocClientCertificateTest(),//,GeoDK...,
                EnsureBootstrapSecurityToken(token));
 
             return securityToken;

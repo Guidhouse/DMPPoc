@@ -47,6 +47,10 @@
     <Compile Include="CertificateWsTrustBinding.cs" />
     <Compile Include="CertUtil.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Contracts\HelloWorldQuery.cs" />
+    <Compile Include="Contracts\HelloWorldResult.cs" />
+    <Compile Include="Contracts\IService1.cs" />
+    <Compile Include="Contracts\IServiceContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityTokenTypes.cs" />
     <Compile Include="UserNameWSTrustBinding.cs" />

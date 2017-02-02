@@ -154,11 +154,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -202,6 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WS2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoDKPOCDMPTest.Shared\GeoDKPOCDMPTest.Shared.csproj">
+      <Project>{7e0b4b6a-eff8-42dd-95da-3f7b62866457}</Project>
+      <Name>GeoDKPOCDMPTest.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

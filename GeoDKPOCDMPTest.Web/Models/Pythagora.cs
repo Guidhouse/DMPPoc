@@ -7,11 +7,11 @@ namespace GeoDKPOCDMPTest.Web.Models
 {
     public class PythagoraModel
     {
-        public List<Dataset> Datasets { get; set; }
+        public List<WebDataset> Datasets { get; set; }
         public string Msg { get; set; }
     }
 
-    public class Dataset
+    public class WebDataset
     {
         public int Id { get; set; }
         public int? ValueA { get; set; }

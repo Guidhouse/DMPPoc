@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" />
+  <xs:import schemaLocation="https://geodkpocdmptestws1.azurewebsites.net/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.Shared.Contracts" />
   <xs:element name="GetCompanyByCvrNumber">
     <xs:complexType>
       <xs:sequence>
@@ -11,7 +11,7 @@
   <xs:element name="GetCompanyByCvrNumberResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetCompanyByCvrNumberResult" nillable="true" type="q1:CompanyInfo" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.Shared.Contracts" minOccurs="0" name="GetCompanyByCvrNumberResult" nillable="true" type="q1:CompanyInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -23,7 +23,7 @@
   <xs:element name="GetDatasetsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="GetDatasetsResult" nillable="true" type="q2:Datasets" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.Shared.Contracts" minOccurs="0" name="GetDatasetsResult" nillable="true" type="q2:Datasets" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +53,7 @@
   <xs:element name="CalculateDataSetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1" minOccurs="0" name="CalculateDataSetResult" nillable="true" type="q3:CalculatedDataset" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.Shared.Contracts" minOccurs="0" name="CalculateDataSetResult" nillable="true" type="q3:CalculatedDataset" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

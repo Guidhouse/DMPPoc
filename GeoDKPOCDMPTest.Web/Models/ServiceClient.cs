@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
+//using GeoDKPOCDMPTest.Shared.Contracts;
 
 namespace GeoDKPOCDMPTest.Web.Models
 {
@@ -24,17 +25,17 @@ namespace GeoDKPOCDMPTest.Web.Models
             }
         }
 
-        public static List<Dataset> getDataSets()
+        public static List<WebDataset> getDataSets()
         {
             WS1.Service1Client client = new WS1.Service1Client();
             try
             {
-                var dSets = new List<Dataset>();
+                var dSets = new List<WebDataset>();
 
                 var rawSets =  client.GetDatasets();
                 foreach(var ds in  rawSets.PythagorasValues)
                 {
-                    dSets.Add(new Dataset()
+                    dSets.Add(new WebDataset()
                     {
                         Id = ds.Id,
                         ValueA = ds.ValueA.GetValueOrDefault(),
@@ -89,8 +90,11 @@ namespace GeoDKPOCDMPTest.Web.Models
 
         }
 
+        
+
+
         // Lav binding til STS'en
-        //B
+        //
         // Lav binding til servicen
         //  var serviceBinding = WsTrustClient.GetServiceBinding(stsBinding, Constants.StsAddressUserName, false);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using GeoDKPOCDMPTest.WS1.Models;
-
+using GeoDKPOCDMPTest.Shared.Contracts;
 namespace GeoDKPOCDMPTest.WS1.Repositories
 {
     public static class ServiceRepository

@@ -6,7 +6,7 @@ using GeoDKPOCDMPTest.WS1.Repositories;
 using GeoDKPOCDMPTest.WS1.Models;
 using System.Security.Claims;
 using System.Threading;
-
+using GeoDKPOCDMPTest.Shared.Contracts;
 
 namespace GeoDKPOCDMPTest.WS1
 {

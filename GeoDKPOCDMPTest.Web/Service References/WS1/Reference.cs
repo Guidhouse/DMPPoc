@@ -9,317 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace GeoDKPOCDMPTest.Web.WS1 {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompanyInfo", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
-    [System.SerializableAttribute()]
-    public partial class CompanyInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CvrNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CvrNumber {
-            get {
-                return this.CvrNumberField;
-            }
-            set {
-                if ((this.CvrNumberField.Equals(value) != true)) {
-                    this.CvrNumberField = value;
-                    this.RaisePropertyChanged("CvrNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Datasets", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
-    [System.SerializableAttribute()]
-    public partial class Datasets : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GeoDKPOCDMPTest.Web.WS1.Dataset[] PythagorasValuesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GeoDKPOCDMPTest.Web.WS1.Dataset[] PythagorasValues {
-            get {
-                return this.PythagorasValuesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PythagorasValuesField, value) != true)) {
-                    this.PythagorasValuesField = value;
-                    this.RaisePropertyChanged("PythagorasValues");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Dataset", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
-    [System.SerializableAttribute()]
-    public partial class Dataset : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ValueAField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ValueBField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ValueCField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> ValueA {
-            get {
-                return this.ValueAField;
-            }
-            set {
-                if ((this.ValueAField.Equals(value) != true)) {
-                    this.ValueAField = value;
-                    this.RaisePropertyChanged("ValueA");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> ValueB {
-            get {
-                return this.ValueBField;
-            }
-            set {
-                if ((this.ValueBField.Equals(value) != true)) {
-                    this.ValueBField = value;
-                    this.RaisePropertyChanged("ValueB");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> ValueC {
-            get {
-                return this.ValueCField;
-            }
-            set {
-                if ((this.ValueCField.Equals(value) != true)) {
-                    this.ValueCField = value;
-                    this.RaisePropertyChanged("ValueC");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CalculatedDataset", Namespace="http://schemas.datacontract.org/2004/07/GeoDKPOCDMPTest.WS1")]
-    [System.SerializableAttribute()]
-    public partial class CalculatedDataset : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MessageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ValueAField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ValueBField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ValueCField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Message {
-            get {
-                return this.MessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
-                    this.MessageField = value;
-                    this.RaisePropertyChanged("Message");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double ValueA {
-            get {
-                return this.ValueAField;
-            }
-            set {
-                if ((this.ValueAField.Equals(value) != true)) {
-                    this.ValueAField = value;
-                    this.RaisePropertyChanged("ValueA");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double ValueB {
-            get {
-                return this.ValueBField;
-            }
-            set {
-                if ((this.ValueBField.Equals(value) != true)) {
-                    this.ValueBField = value;
-                    this.RaisePropertyChanged("ValueB");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double ValueC {
-            get {
-                return this.ValueCField;
-            }
-            set {
-                if ((this.ValueCField.Equals(value) != true)) {
-                    this.ValueCField = value;
-                    this.RaisePropertyChanged("ValueC");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS1.IService1")]
@@ -327,17 +17,17 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/GetCompanyByCvrNumberFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNummer);
+        GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo GetCompanyByCvrNumber(int cvrNummer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCompanyByCvrNumber", ReplyAction="http://tempuri.org/IService1/GetCompanyByCvrNumberResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer);
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/GetDatasetsFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        GeoDKPOCDMPTest.Web.WS1.Datasets GetDatasets();
+        GeoDKPOCDMPTest.Shared.Contracts.Datasets GetDatasets();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDatasets", ReplyAction="http://tempuri.org/IService1/GetDatasetsResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.Datasets> GetDatasetsAsync();
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.Datasets> GetDatasetsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetDataset", ReplyAction="http://tempuri.org/IService1/SetDatasetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/SetDatasetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
@@ -348,10 +38,10 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IService1/CalculateDataSetFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
-        GeoDKPOCDMPTest.Web.WS1.CalculatedDataset CalculateDataSet(int Id);
+        GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset CalculateDataSet(int Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CalculateDataSet", ReplyAction="http://tempuri.org/IService1/CalculateDataSetResponse")]
-        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataset> CalculateDataSetAsync(int Id);
+        System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset> CalculateDataSetAsync(int Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -381,19 +71,19 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
                 base(binding, remoteAddress) {
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CompanyInfo GetCompanyByCvrNumber(int cvrNummer) {
+        public GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo GetCompanyByCvrNumber(int cvrNummer) {
             return base.Channel.GetCompanyByCvrNumber(cvrNummer);
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer) {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo> GetCompanyByCvrNumberAsync(int cvrNummer) {
             return base.Channel.GetCompanyByCvrNumberAsync(cvrNummer);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.Datasets GetDatasets() {
+        public GeoDKPOCDMPTest.Shared.Contracts.Datasets GetDatasets() {
             return base.Channel.GetDatasets();
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.Datasets> GetDatasetsAsync() {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.Datasets> GetDatasetsAsync() {
             return base.Channel.GetDatasetsAsync();
         }
         
@@ -405,11 +95,11 @@ namespace GeoDKPOCDMPTest.Web.WS1 {
             return base.Channel.SetDatasetAsync(valueA, valueB, valueC);
         }
         
-        public GeoDKPOCDMPTest.Web.WS1.CalculatedDataset CalculateDataSet(int Id) {
+        public GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset CalculateDataSet(int Id) {
             return base.Channel.CalculateDataSet(Id);
         }
         
-        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Web.WS1.CalculatedDataset> CalculateDataSetAsync(int Id) {
+        public System.Threading.Tasks.Task<GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset> CalculateDataSetAsync(int Id) {
             return base.Channel.CalculateDataSetAsync(Id);
         }
     }

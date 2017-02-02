@@ -123,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\styles.css" />
+    <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset.datasource" />
+    <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo.datasource" />
+    <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.Datasets.datasource" />
     <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Global.asax" />
@@ -133,15 +136,6 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CompanyInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.CalculatedDataset1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WS1\GeoDKPOCDMPTest.Web.WS1.Datasets.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\WS1\Service1.disco" />
     <None Include="Service References\WS1\configuration91.svcinfo" />
     <None Include="Service References\WS1\configuration.svcinfo" />
