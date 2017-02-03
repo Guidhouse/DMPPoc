@@ -62,7 +62,7 @@ namespace GeoDKPOCDMPTest.Shared
                 var requestSecurityToken = new RequestSecurityToken(RequestTypes.Issue)
                 {
                     AppliesTo = new EndpointReference(serviceAddress.ToString()),
-                    TokenType = SecurityTokenTypes.Saml11TokenProfile11,
+                    TokenType = SecurityTokenTypes.OasisWssSaml2TokenProfile11,
                     KeyType = KeyTypes.Symmetric
                 };
 
