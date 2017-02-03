@@ -33,12 +33,12 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var userCvr = int.Parse(pClaim.Claims.Single(c => string.Equals(c.Type, "identify/dk:gov:saml:attribute:CvrNumberIdentifier")).Value);
 
             ViewBag.Name = uid;
-            //var sb = new StringBuilder();//Get a list of claims..
-            //foreach (var c in pClaim.Claims)//To list types and values of claims.
-            //{
-            //    sb.AppendLine($"type: {c.Type} value: {c.Value}{Environment.NewLine}");
-            //}
-            //model.Msg = $"{sb.ToString()} {Environment.NewLine}";
+            var sb = new StringBuilder();//Get a list of claims..
+            foreach (var c in pClaim.Claims)//To list types and values of claims.
+            {
+                sb.AppendLine($"type: {c.Type} value: {c.Value}{Environment.NewLine}");
+            }
+            model.Msg = $"{sb.ToString()} {Environment.NewLine}";
 
             model.Msg = $"{model.Msg} Velkommen {uid}. {ServiceClient.getValuesFromWs1(userCvr)}. {Environment.NewLine}";//No security and tied to 101kmd cvr.
 
@@ -174,7 +174,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
         {
             var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
                Constants.StsAddressCertificate,
-               Constants.StsPocCertificate,// KMDProveopgave  Encryption certifikat
+               Constants.StsCertificate,// KMDProveopgave  Encryption certifikat
                Constants.PocServiceAddress,// DotNetServiceAddress,
                Constants.GetPocClientCertificateTest(),//,GeoDK...,
                EnsureBootstrapSecurityToken(token));
@@ -187,7 +187,7 @@ namespace GeoDKPOCDMPTest.Web.Controllers
             var newToken = WsTrustClient.RequestSecurityTokenWithUserName(
                 Constants.StsAddressUserName,
                 Constants.StsCertificate,
-                Constants.DotNetServiceAddress,//PocServiceAddress, //JavaServiceAddress
+                Constants.PocServiceAddress,//PocServiceAddress, //JavaServiceAddress
                 Constants.DmpUserName,
                 Constants.DmpPassword,
                 EnsureBootstrapSecurityToken(token));
