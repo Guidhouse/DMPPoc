@@ -1,9 +1,15 @@
 ﻿using GeoDKPOCDMPTest.Shared;
+using GeoDKPOCDMPTest.Shared.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IdentityModel.Services;
+using System.IdentityModel.Tokens;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Web;
+using System.Xml;
 //using GeoDKPOCDMPTest.Shared.Contracts;
 
 namespace GeoDKPOCDMPTest.Web.Models
@@ -13,7 +19,6 @@ namespace GeoDKPOCDMPTest.Web.Models
         public static string getValuesFromWs1(int value)
         {
             WS1.Service1Client WS1 = new WS1.Service1Client();
-
             try
             {
                 var cinfo = WS1.GetCompanyByCvrNumber(value);
@@ -63,7 +68,6 @@ namespace GeoDKPOCDMPTest.Web.Models
             {
                 throw new Exception("WS1 stejler: " + ex.Message);
             }
-
         }
 
         public static CalculatedDataset GetCalculetedDataset(int id)
@@ -82,7 +86,6 @@ namespace GeoDKPOCDMPTest.Web.Models
                 };
                 return calcSet;
             }
-
             catch (Exception ex)
             {
                 throw new Exception("WS1 stejler: " + ex.Message);
@@ -90,47 +93,62 @@ namespace GeoDKPOCDMPTest.Web.Models
 
         }
 
-        
+        public static string getCompanyInfoWithActas(BootstrapContext token, int userCvr)
+        {
+            var serviceToken = GetTokenForActasWithCertificate(token);
+            // Lav binding til STS'en
+            var stsBinding = WsTrustClient.GetStsBinding();
 
+            // Lav binding til servicen
+            var serviceBinding = WsTrustClient.GetServiceBinding(stsBinding, Constants.StsAddressUserName, true);
 
-        // Lav binding til STS'en
-        //
-        // Lav binding til servicen
-        //  var serviceBinding = WsTrustClient.GetServiceBinding(stsBinding, Constants.StsAddressUserName, false);
+            // Lav channel til servicen
+            var channelFactory = new ChannelFactory<IService1>(serviceBinding, Constants.PocServiceAddress);
 
-        // Deaktiver secure conversation, da Java servicen ikke bruger det
-        //  var serviceBindingWithoutSecureConversation = WsTrustClient.CreateWsFederationBindingWithoutSecureConversation(serviceBinding);
+            if (channelFactory.Credentials == null)
+                throw new ApplicationException("ChannelFactory must have credentials");
+            // Deaktiver service cert validering
+            channelFactory.Credentials.ServiceCertificate.Authentication.CertificateValidationMode =
+                X509CertificateValidationMode.None;
+            channelFactory.Credentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
 
-        // Lav channel til servicen
-        //var channelFactory =
-        //    new ChannelFactory<IServiceChannel>(
-        //        serviceBindingWithoutSecureConversation,
-        //        Constants.JavaServiceAddress);
+            // Påhæft token til kald til service
+            var channel = channelFactory.CreateChannelWithActAsToken(serviceToken);
+            try
+            {
+                var msg = channel.GetCompanyByCvrNumber(userCvr);
+                return msg.Name;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+                return msg;
+            }
+            finally
+            {
+                WsTrustClient.CloseChannel(channel);
+            }
+        }
 
-        //if (channelFactory.Credentials == null)
-        //    throw new ApplicationException("ChannelFactory must have credentials");
+        public static SecurityToken GetTokenForActasWithCertificate(BootstrapContext token)
+        {
+            var securityToken = WsTrustClient.RequestSecurityTokenWithX509(
+               Constants.StsAddressCertificate,
+               Constants.StsCertificate,
+               Constants.PocServiceAddress,
+               Constants.GetPocClientCertificate(),//KmdProveopgave,
+               EnsureBootstrapSecurityToken(token));
+            return securityToken;
+        }
 
-        //// Sæt encryption certifikat til java servicen
-        //channelFactory.Credentials.ServiceCertificate.ScopedCertificates.Add(Constants.JavaServiceAddress.Uri, Constants.ServiceCertificate);
-
-        // Lav channel med token'et fra STS'en
-        //var channel = channelFactory.CreateChannelWithIssuedToken(securityToken);
-        //try
-        //{
-        //    // Lav query
-        //    //var query = new DotNetSamples.Common.DAI.
-        //    //                {
-        //    //                   Body = new Common.Tomcat.helloRequestBody("Jesper")
-        //    //                };
-
-        //    // Kald service
-        //    return channel.HelloWorld(new HelloWorldRequest());
-        //}
-        //finally
-        //{
-        //    // Luk channel
-        //    WsTrustClient.CloseChannel(channel);
-        //}
-        //            return null;
+        private static SecurityToken EnsureBootstrapSecurityToken(BootstrapContext bootstrapContext)
+        {
+            if (bootstrapContext.SecurityToken != null)
+                return bootstrapContext.SecurityToken;
+            if (string.IsNullOrWhiteSpace(bootstrapContext.Token))
+                return null;
+            var handlers = FederatedAuthentication.FederationConfiguration.IdentityConfiguration.SecurityTokenHandlers;
+            return handlers.ReadToken(new XmlTextReader(new StringReader(bootstrapContext.Token)));
+        }
     }
 }

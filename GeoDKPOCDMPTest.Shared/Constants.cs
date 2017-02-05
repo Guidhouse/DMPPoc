@@ -100,22 +100,11 @@ namespace GeoDKPOCDMPTest.Shared
             get { return GetX509Certificate(ConfigurationManager.AppSettings["JavaServiceCertificate"]); }
         }
 
-        public static readonly EndpointAddress DotNetServiceAddress = new EndpointAddress(new Uri(DotNetServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(DotNetServiceCertifikatName));
         public static readonly EndpointAddress PocServiceAddress = new EndpointAddress(new Uri(PocServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(PocServiceCertifikatName));
+        
 
-        public static readonly EndpointAddress JavaServiceAddress = new EndpointAddress(new Uri(JavaServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(JavaServiceCertifikatName));
-
-        // Client certifikat til x509 authentication (TEST) vnTest PKI certifikat.
-        public static X509Certificate2 GetClientCertificateTest()
-        {
-            return CertUtil.GetCertificate(
-                StoreLocation.LocalMachine,
-                StoreName.My,
-                X509FindType.FindByThumbprint,
-                "f8 a3 9b 92 74 dd e5 8b 79 bc 95 45 f5 57 a5 be 3e 1e 13 12");//vnTest
-        }
         // Client certifikat til x509 authentication (TEST) KMDProveopgave PKI certifikat.
-        public static X509Certificate2 GetPocClientCertificateTest()
+        public static X509Certificate2 GetPocClientCertificate()
         {
             return CertUtil.GetCertificate(
                 StoreLocation.CurrentUser,

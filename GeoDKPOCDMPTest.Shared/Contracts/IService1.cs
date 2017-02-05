@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Runtime.Serialization;
 using System.ServiceModel;
-
+using System.ServiceModel.Web;
 
 namespace GeoDKPOCDMPTest.Shared.Contracts
 {
@@ -11,6 +11,7 @@ namespace GeoDKPOCDMPTest.Shared.Contracts
     [ServiceContract]
     public interface IService1
     {
+        
         [OperationContract]
         [FaultContract(typeof(FaultException))]
         CompanyInfo GetCompanyByCvrNumber(int cvrNummer);
@@ -27,7 +28,7 @@ namespace GeoDKPOCDMPTest.Shared.Contracts
         [FaultContract(typeof(FaultException))]
         CalculatedDataset CalculateDataSet(int Id);
     }
-
+    
     [DataContract]
     public class CompanyInfo
     {

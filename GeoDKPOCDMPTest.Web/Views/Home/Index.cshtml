@@ -27,13 +27,13 @@
                 <button id="saveDataButton" type="button" class="pure-button pure-button-primary pure-u-md-1-3" @if (!isProverolleA) { <text></text> }>gem</button>
                 <select class="pure-u-1 pure-u-md-1-1" id="datasetPicker">
                     <option>Vælg et dataset til beregning</option>
-                    @foreach (var set in Model.Datasets)
+                    @*@foreach (var set in Model.Datasets)
                     {
                         var a = set.ValueA > 0 ? set.ValueA.ToString() : "Beregn";
                         var b = set.ValueB > 0 ? set.ValueB.ToString() : "Beregn";
                         var c = set.ValueC > 0 ? set.ValueC.ToString() : "Beregn";
                         <option value="id_@set.Id">ID: @set.Id: A:@a, B:@b, C:@c</option>
-                    }
+                    }*@
                 </select>
                 <button id="calculateButton" type="button" class="pure-button pure-button-primary pure-u-md-1-3" @if (!isProverolleB) { <text> </text>}>beregn</button>
                 <textarea id="msgBox" class="pure-u-md-1-1" rows="8">@Model.Msg </textarea>

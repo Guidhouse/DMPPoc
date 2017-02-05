@@ -126,6 +126,10 @@
     <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.CalculatedDataset.datasource" />
     <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.CompanyInfo.datasource" />
     <Content Include="Properties\DataSources\GeoDKPOCDMPTest.Shared.Contracts.Datasets.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Global.asax" />
@@ -157,6 +161,11 @@
     <Compile Include="Models\Pythagora.cs" />
     <Compile Include="Models\ServiceClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WS1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,8 +182,12 @@
     <None Include="Properties\PublishProfiles\GeoDKPOCDMPTestWeb.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\DataSetPicker.cshtml" />
     <None Include="Service References\WS1\Service1.wsdl" />
     <None Include="Service References\WS1\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WS1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\WS1\Service12.xsd">
@@ -186,10 +199,6 @@
     <None Include="Service References\WS1\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WS1\Service15.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Views\Home\DataSetPicker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -209,6 +218,9 @@
       <Project>{7e0b4b6a-eff8-42dd-95da-3f7b62866457}</Project>
       <Name>GeoDKPOCDMPTest.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WS1\" />

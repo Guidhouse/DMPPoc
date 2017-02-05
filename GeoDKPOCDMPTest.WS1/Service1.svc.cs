@@ -7,6 +7,7 @@ using GeoDKPOCDMPTest.WS1.Models;
 using System.Security.Claims;
 using System.Threading;
 using GeoDKPOCDMPTest.Shared.Contracts;
+using System.ServiceModel.Web;
 
 namespace GeoDKPOCDMPTest.WS1
 {
@@ -15,14 +16,38 @@ namespace GeoDKPOCDMPTest.WS1
     public class Service1 : IService1
     {
 
+        [WebInvoke(Method = "POST")]
         public CompanyInfo GetCompanyByCvrNumber(int cvrNumber)
         {
-            // var identity = GetClaimsIdentity();
+          //  AssertBootstrapTokenIsAvailable();
+            var identity = GetClaimsIdentity();
             var rep = new DB1Repository();
             var cInfo = rep.GetCompanyInfo(cvrNumber);
             return cInfo;
-
         }
+
+        //public void AssertBootstrapTokenIsAvailable()
+        //{
+        //    var identity = GetClaimsIdentity();
+
+        //    var token = identity.BootstrapContext as BootstrapContext;
+        //    if (EnsureBootstrapSecurityToken(token) == null)
+        //        throw new ApplicationException("Cannot get boostrap context from current identity.");
+
+        //    if (token == null)
+        //        throw new ApplicationException("Bootstrap token cannot be null");
+        //}
+
+        //private static SecurityToken EnsureBootstrapSecurityToken(BootstrapContext bootstrapContext)
+        //{
+        //    if (bootstrapContext.SecurityToken != null)
+        //        return bootstrapContext.SecurityToken;
+        //    if (string.IsNullOrWhiteSpace(bootstrapContext.Token))
+        //        return null;
+        //    var handlers = FederatedAuthentication.FederationConfiguration.IdentityConfiguration.SecurityTokenHandlers;
+        //    return handlers.ReadToken(new XmlTextReader(new StringReader(bootstrapContext.Token)));
+        //}
+
         public Datasets GetDatasets()
         {
             var datasets = new Datasets();
