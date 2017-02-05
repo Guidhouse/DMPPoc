@@ -103,7 +103,7 @@ namespace GeoDKPOCDMPTest.Web.Models
             var serviceBinding = WsTrustClient.GetServiceBinding(stsBinding, Constants.StsAddressUserName, true);
 
             // Lav channel til servicen
-            var channelFactory = new ChannelFactory<IService1>(serviceBinding, Constants.PocServiceAddress);
+            var channelFactory = new ChannelFactory<IService1>(serviceBinding, Constants.PocServiceEndpoint);//different from serviceURL
 
             if (channelFactory.Credentials == null)
                 throw new ApplicationException("ChannelFactory must have credentials");

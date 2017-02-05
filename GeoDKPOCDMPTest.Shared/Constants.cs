@@ -78,6 +78,10 @@ namespace GeoDKPOCDMPTest.Shared
         {
             get { return ConfigurationManager.AppSettings["PocServiceURL"]; }
         }
+        private static string PocServiceEndpointUrl
+        {
+            get { return ConfigurationManager.AppSettings["PocServiceEndpointURL"]; }
+        }
 
         private static string PocServiceCertifikatName
         {
@@ -85,21 +89,9 @@ namespace GeoDKPOCDMPTest.Shared
         }
 
 
-        private static string JavaServiceAddressUrl
-        {
-            get { return ConfigurationManager.AppSettings["JavaServiceURL"]; }
-        }
 
-        private static string JavaServiceCertifikatName
-        {
-            get { return ConfigurationManager.AppSettings["JavaServiceCertifikatNavn"]; }
-        }
 
-        public static X509Certificate2 ServiceCertificate
-        {
-            get { return GetX509Certificate(ConfigurationManager.AppSettings["JavaServiceCertificate"]); }
-        }
-
+        public static readonly EndpointAddress PocServiceEndpoint = new EndpointAddress(new Uri(PocServiceEndpointUrl), EndpointIdentity.CreateDnsIdentity(PocServiceCertifikatName));
         public static readonly EndpointAddress PocServiceAddress = new EndpointAddress(new Uri(PocServiceAddressUrl), EndpointIdentity.CreateDnsIdentity(PocServiceCertifikatName));
         
 
@@ -110,8 +102,6 @@ namespace GeoDKPOCDMPTest.Shared
                 StoreLocation.CurrentUser,
                 StoreName.My,
                 X509FindType.FindByThumbprint,
-              //  "03 87 73 3f 0f f5 a2 10 6b 90 a3 f0 5f 9a 9d 3b 7b 55 6f a7");
-           //"d9 18 ad 8c 49 57 9f 76 3d ab a1 3e 76 ba 20 ce 55 5a e0 3a");//GeoDKPOCDMPTest (funktionscertifikat)
             "ad 18 03 87 5c 2b 57 d3 8a bb bf b0 b5 32 f9 0c 7c 81 98 21");//KmdProveopgave
         }
         // Brugernavn til test dmp bruger

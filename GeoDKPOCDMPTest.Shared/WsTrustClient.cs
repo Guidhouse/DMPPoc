@@ -51,10 +51,10 @@ namespace GeoDKPOCDMPTest.Shared
             // Konfigurer Windows Identity Foundation
             // Lav channel og brug act as hvis der er et act as token med
             var channel = (WSTrustChannel)channelFactory.CreateChannel();
-            if (actAsSecurityToken != null)
-            {
-                channel = (WSTrustChannel)channelFactory.CreateChannelWithActAsToken(actAsSecurityToken);
-            }
+           // if (actAsSecurityToken != null)
+            //{
+            //    channel = (WSTrustChannel)channelFactory.CreateChannelWithActAsToken(actAsSecurityToken);
+            //}
     
             try
             {
